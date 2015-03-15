@@ -1,0 +1,15 @@
+Source: casimir-editor
+Section: unknown
+Priority: optional
+Maintainer: Jose A. Murcia <joamuran@gmail.com>
+Build-Depends: debhelper (>= 8.0.0), llxsrchelper
+Standards-Version: 3.9.4
+Homepage: http://www.lliurex.net
+#Vcs-Git: git://git.debian.org/collab-maint/base.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/base.git;a=summary
+
+Package: casimir-editor
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Text editor for dyslexics
+ WebODF text editor for dyslexics

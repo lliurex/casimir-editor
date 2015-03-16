@@ -9,7 +9,7 @@
   "window": {
     "title": "Editor Casimir",
     "icon": "logo.png",
-    "toolbar": false,
+    "toolbar": true,
     "frame": true,
     "width": 1024,
     "height": 768,
@@ -19,7 +19,7 @@
     "plugin": true
   },
   "dependencies": {
-    "jed": "~1.1.0"
+    /*"jed": "~1.1.0"*/
   },
   "chromium-args": "--ignore-certificate-errors"
 

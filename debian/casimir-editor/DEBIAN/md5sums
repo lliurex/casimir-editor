@@ -1,0 +1,14 @@
+3b296f8f66f23f9275e95e22fda2bb84  usr/share/casimir-editor/Gruntfile.js
+b5072b5c216a979c9cf6d284527919d2  usr/share/casimir-editor/package.json
+68b329da9893e34099c7d8ad5cb9c940  usr/share/casimir-editor/src/css/main.css
+80a4d04e05b28abad885f7781916c42c  usr/share/casimir-editor/src/index.html
+984752a917db747c89f9e40972cb319a  usr/share/casimir-editor/src/js/lib/gui/i18n.js
+c6d9c912f52f527747d34d38c55ba632  usr/share/casimir-editor/src/js/lib/util/debug.js
+ae558475d0292a3e3a3a098f330feb29  usr/share/casimir-editor/src/js/lib/util/util.js
+870b75c273a97501e7d1fb27776bafd0  usr/share/casimir-editor/src/js/lib_external/jquery-ui/jquery-ui.min.js
+0e90c245c086202a8031151fd53b3dd6  usr/share/casimir-editor/src/js/lib_external/jquery-xmlrpclib/jquery.xmlrpc.js
+5790ead7ad3ba27397aedfa3d263b867  usr/share/casimir-editor/src/js/lib_external/jquery/jquery.min.js
+d41d8cd98f00b204e9800998ecf8427e  usr/share/casimir-editor/src/js/main.js
+a4b9296835aec37c7bb90b4258520113  usr/share/casimir-editor/src/package.json
+3618c627aacc92c0a0327653fadf5592  usr/share/doc/casimir-editor/changelog.gz
+7c1bac0627736f9661850ad2d0835f09  usr/share/doc/casimir-editor/copyright

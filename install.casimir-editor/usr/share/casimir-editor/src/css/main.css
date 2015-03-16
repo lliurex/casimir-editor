@@ -1,1 +1,89 @@
+@font-face {
+    font-family: OpenDyslexic;
+    src: url(fonts/OpenDyslexic-Regular.woff);
+}
 
+
+html{
+	font-family: "OpenDyslexic" !important;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    -webkit-box-sizing: border-box;
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+	cursor:default;
+}
+
+
+html{
+	padding: 0px;
+	margin: 0px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    -webkit-box-sizing: border-box; 
+}
+
+#buttonContainer{
+    position: absolute;
+    left: 0px;
+    top: 100px;
+    width: 100px;
+    height: 300px;
+    z-index: 1;
+}
+
+#editorContainer{
+	float: left;
+	clear: both;
+	width: 100%;
+}
+
+
+#speechChar{
+    background-image: url('img/character.png');
+}
+
+#speechWord{
+    background-image: url('img/word.png');
+    
+}
+
+#speechPhrase{
+    background-image: url('img/phrase.png');
+}
+
+.swapButton{
+	width: 64px;
+	height: 64px;
+    border-radius: 50%;
+	float: left;
+    clear: both;
+	position: relative;
+	display: block;
+	margin: 10px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.14), 0px 4px 8px rgba(0, 0, 0, 0.28);
+}
+
+.swapButton:hover{
+    cursor: pointer;
+    }
+
+.btn_on{
+	/*background: -webkit-linear-gradient(#99e8a6, #418b5d);*/
+     background: #99e8a6;
+}
+
+.btn_off{
+	background: #418b5d;
+}
+
+
+/*document {overflow:scroll; max-height:300px}*/
+ 
+/*#document{
+	width: 100%;
+	height: 100%;
+	
+}*/

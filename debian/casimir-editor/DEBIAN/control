@@ -1,0 +1,10 @@
+Package: casimir-editor
+Version: 0.1
+Architecture: i386
+Maintainer: Jose A. Murcia <joamuran@gmail.com>
+Installed-Size: 414
+Section: unknown
+Priority: optional
+Homepage: http://www.lliurex.net
+Description: Text editor for dyslexics
+ WebODF text editor for dyslexics

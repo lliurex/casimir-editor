@@ -1,0 +1,26 @@
+{
+  "main": "index.html",
+  "name": "Casimir Editor",
+  "description": "Application",
+  "version": "0.1.0",
+  "keywords": [
+    "application"
+  ],
+  "window": {
+    "title": "Editor Casimir",
+    "icon": "logo.png",
+    "toolbar": false,
+    "frame": true,
+    "width": 1024,
+    "height": 768,
+    "position": "mouse"
+  },
+  "webkit": {
+    "plugin": true
+  },
+  "dependencies": {
+    "jed": "~1.1.0"
+  },
+  "chromium-args": "--ignore-certificate-errors"
+
+}

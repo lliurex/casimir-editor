@@ -1,28 +1,122 @@
-function Ceditor(editoritem, MyConfig){
-	// Creates a wodo editor linkjed to editoritem
+var fs = require('fs');
 
-	this.MyConfig=MyConfig;
+function Ceditor(editoritem, MyConfig, FileSaver){
+	// Creates a wodo editor linkjed to editoritem
 	var self=this;
 	
-	Wodo.createTextEditor(editoritem, {
+	self.editor = null;
+	self.FileSaver=FileSaver;
+    
+	self.MyConfig=MyConfig;
+	
+	
+	
+	self.editorOptions = {
 		allFeaturesEnabled: true,
 		saveCallback: function() {
-			var self=this;
-			//alert("Saving "+self.MyConfig.current_doc);
-			//odfCanvas
-			console.log(window.Wodo.odfCanvas);
-			console.log(window.Wodo);
-
-			//self.odfCanvas.save();
-			},
-		saveAsCallback: function() {
+			self.save();
+			}/*,
+		saveAsCallback: function(blob, filename) {
 			alert("SAVE as");
-			},
+			}*/,
 		userData: {
 			fullName: "",
 			color:    ""
 		}
-	}, function (err, editor) { // Start Callback Function
+	}
+	
+	Ceditor.prototype.save = function save () {
+	  function saveByteArrayLocally(err, data) {
+            if (err) {
+                alert(err);
+                return;
+            }
+			// TODO: odfcontainer should have a property mimetype
+            var mimetype = "application/vnd.oasis.opendocument.text",
+                //filename = loadedFilename || "doc.odt",
+				filename = self.MyConfig.current_doc || "doc.odt",
+                blob = new Blob([data.buffer], {type: mimetype});
+			console.log(blob);
+				//self.FileSaver.saveAs(blob, filename);
+				//ret=saveAs(blob, filename);
+				
+				// CASCA
+                //fs.writeFile("/tmp/test.odt", blob, function(err) {alert(err);});
+			var reader = new window.FileReader();
+			//reader.readAsDataURL(blob);
+			 //reader.readAsBinaryString(blob);
+			 //  https://developer.mozilla.org/en-US/docs/Web/API/FileReader#readAsDataURL%28%29
+			 reader.onloadend = function() {
+                base64data = reader.result;
+                //console.log(base64data );
+				fs.writeFile("/tmp/test.odt", base64data, function(err) {alert(err);});
+				
+			}
+			
+			//var odfContainer = odfCanvas.odfContainer();
+			//self.saveAs (odfContainer, "/tmp/", "tralari.odt", callback);
+			
+			
+			/* var odfelement = document.getElementById("odf");
+    var textns = "urn:oasis:names:tc:opendocument:xmlns:text:1.0";
+    var odfCanvas = new odf.OdfCanvas(odfelement);
+    odfCanvas.load("invoice.odt");*/
+			 //self.saveAs (odfContainer, folder, filename, callback);
+			
+            //saveAsCallback(blob, filename);
+            // TODO: hm, saveAs could fail or be cancelled
+			
+			
+            self.editor.setDocumentModified(false);
+        }
+        self.editor.getDocumentAsByteArray(saveByteArrayLocally);
+	  
+	  
+	  
+	  
+    }
+	
+	
+	//Ceditor.prototype.saveAs = function(folder, filename, type, data, callback) {}
+	Ceditor.prototype.saveAs = function saveAs (odfContainer, folder, filename, callback) {
+      odfContainer.createByteArray(function(data) {
+        writeFile(folder, filename, odfContainer.getDocumentType(), data, callback)
+      }, callback);
+    }
+	
+	
+	
+	Ceditor.prototype.writeFile = function writeFile (folder, filename, type, data, callback) {
+      if (window.File && window.FileReader && window.FileList && window.Blob) {
+        var path = folder+"/"+filename;
+        var blob = new Blob([data.buffer], {type : 'application/vnd.oasis.opendocument.'+type});
+        var formData = new FormData();
+        formData.append("WebODF", blob, filename);
+
+        var request = new XMLHttpRequest();
+        request.open("PUT", path);
+        request.send(formData);
+      } else {
+        callback('The File APIs are not fully supported in this browser.');
+      }
+    }
+	
+	Ceditor.prototype.writeFile = function(folder, filename, type, data, callback) {
+      if (window.File && window.FileReader && window.FileList && window.Blob) {
+        var path = folder+"/"+filename;
+        var blob = new Blob([data.buffer], {type : 'application/vnd.oasis.opendocument.'+type});
+        var formData = new FormData();
+        formData.append("WebODF", blob, filename);
+
+        var request = new XMLHttpRequest();
+        request.open("PUT", path);
+        request.send(formData);
+      } else {
+        callback('The File APIs are not fully supported in this browser.');
+      }
+    }
+	
+	Ceditor.prototype.onEditorCreated = function onEditorCreated(err, editor){ // Callback function
 		if (err) {
 			// something failed unexpectedly, deal with it (here just a simple alert)
 			alert(err);
@@ -57,9 +151,13 @@ function Ceditor(editoritem, MyConfig){
 		
 		});
 		
+		self.editor=editor; // This is the result of createTextEditor
 		
-	  }); // End CallBack Function
+		
+	  }
+		
 	
+	Wodo.createTextEditor(editoritem, self.editorOptions, self.onEditorCreated); // End CallBack Function
 	
 	
 }

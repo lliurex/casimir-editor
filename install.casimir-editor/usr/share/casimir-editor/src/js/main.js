@@ -7,6 +7,9 @@ $(document).ready(function() {
 // Loading Config
 var MyConfig=new Config(MyConfig);
 
+//var FileSaver=new saveAs();
+var FileSaver=null;
+
 // Loading GUI
 mygui=new GUI();
 // Binding GUI Events
@@ -14,7 +17,7 @@ mygui.bindGUIEvents(MyConfig);
 
 
 
-var MyEditor=new Ceditor('editorContainer', MyConfig);
+var MyEditor=new Ceditor('editorContainer', MyConfig, FileSaver);
 
 
    

@@ -13,108 +13,147 @@ function Ceditor(editoritem, MyConfig, FileSaver){
 	
 	self.editorOptions = {
 		allFeaturesEnabled: true,
+		loadCallback: function(){
+			self.load();
+			},
 		saveCallback: function() {
 			self.save();
-			}/*,
-		saveAsCallback: function(blob, filename) {
-			alert("SAVE as");
-			}*/,
+			},
+		//saveAsCallback: function(blob, filename) {
+		saveAsCallback: function() {
+			self.saveAs();
+			},
 		userData: {
 			fullName: "",
 			color:    ""
 		}
 	}
 	
+	Ceditor.prototype.changeStatus = function changeStatus(text){
+		$("#StatusMsg").empty().html(text).fadeIn();
+		
+		$("#statusbar").css("background", "#99e8a6");
+		
+		setInterval(function(){
+			$("#statusbar").css("background", "#eeeeee");
+			$("#StatusMsg").fadeOut();
+			}, 5000);
+		
+		
+		};
+	
 	Ceditor.prototype.save = function save () {
-	  function saveByteArrayLocally(err, data) {
+		if (self.MyConfig.current_doc === null) return -1;
+		
+		function saveByteArrayLocally(err, data) {
             if (err) {
                 alert(err);
                 return;
             }
-			// TODO: odfcontainer should have a property mimetype
-            var mimetype = "application/vnd.oasis.opendocument.text",
-                //filename = loadedFilename || "doc.odt",
-				filename = self.MyConfig.current_doc || "doc.odt",
-                blob = new Blob([data.buffer], {type: mimetype});
-			console.log(blob);
-				//self.FileSaver.saveAs(blob, filename);
-				//ret=saveAs(blob, filename);
-				
-				// CASCA
-                //fs.writeFile("/tmp/test.odt", blob, function(err) {alert(err);});
-			var reader = new window.FileReader();
-			//reader.readAsDataURL(blob);
-			 //reader.readAsBinaryString(blob);
-			 //  https://developer.mozilla.org/en-US/docs/Web/API/FileReader#readAsDataURL%28%29
-			 reader.onloadend = function() {
-                base64data = reader.result;
-                //console.log(base64data );
-				fs.writeFile("/tmp/test.odt", base64data, function(err) {alert(err);});
-				
+			// Setting filename
+			var filename = self.MyConfig.current_doc || "doc.odt";
+			// Create a buffer from data
+			var buffer = new Buffer(data.length);
+
+			for (var i = 0; i < data.length; i++) {
+				buffer.writeUInt8(data[i], i);
 			}
-			
-			//var odfContainer = odfCanvas.odfContainer();
-			//self.saveAs (odfContainer, "/tmp/", "tralari.odt", callback);
-			
-			
-			/* var odfelement = document.getElementById("odf");
-    var textns = "urn:oasis:names:tc:opendocument:xmlns:text:1.0";
-    var odfCanvas = new odf.OdfCanvas(odfelement);
-    odfCanvas.load("invoice.odt");*/
-			 //self.saveAs (odfContainer, folder, filename, callback);
-			
-            //saveAsCallback(blob, filename);
-            // TODO: hm, saveAs could fail or be cancelled
-			
-			
+
+			// Write buffer
+				
+			fs.writeFile(filename, buffer);
             self.editor.setDocumentModified(false);
         }
         self.editor.getDocumentAsByteArray(saveByteArrayLocally);
+		self.changeStatus("Saved "+self.MyConfig.current_doc);
 	  
-	  
+	  return 0;
 	  
 	  
     }
 	
-	
-	//Ceditor.prototype.saveAs = function(folder, filename, type, data, callback) {}
-	Ceditor.prototype.saveAs = function saveAs (odfContainer, folder, filename, callback) {
-      odfContainer.createByteArray(function(data) {
-        writeFile(folder, filename, odfContainer.getDocumentType(), data, callback)
-      }, callback);
-    }
-	
-	
-	
-	Ceditor.prototype.writeFile = function writeFile (folder, filename, type, data, callback) {
-      if (window.File && window.FileReader && window.FileList && window.Blob) {
-        var path = folder+"/"+filename;
-        var blob = new Blob([data.buffer], {type : 'application/vnd.oasis.opendocument.'+type});
-        var formData = new FormData();
-        formData.append("WebODF", blob, filename);
+	Ceditor.prototype.load = function load () {
+		// Showing FIle Lialog
+		var chooser = $(document.createElement("input")).attr("id","fileDialog").attr("type","file");
+		 $(chooser).attr("style", "display:none");
+		 
+		 $("body").append(chooser);
+			
+		function chooseFile(name) {
+			var chooser = $(name);
+			chooser.change(function(evt) {
+					self.openDocument($(this).val());
+					self.changeStatus("Loaded "+$(this).val());
+		  });
 
-        var request = new XMLHttpRequest();
-        request.open("PUT", path);
-        request.send(formData);
-      } else {
-        callback('The File APIs are not fully supported in this browser.');
-      }
-    }
+		chooser.trigger('click');  
+		}
+			
+		chooseFile('#fileDialog');
+	}
 	
-	Ceditor.prototype.writeFile = function(folder, filename, type, data, callback) {
-      if (window.File && window.FileReader && window.FileList && window.Blob) {
-        var path = folder+"/"+filename;
-        var blob = new Blob([data.buffer], {type : 'application/vnd.oasis.opendocument.'+type});
-        var formData = new FormData();
-        formData.append("WebODF", blob, filename);
-
-        var request = new XMLHttpRequest();
-        request.open("PUT", path);
-        request.send(formData);
-      } else {
-        callback('The File APIs are not fully supported in this browser.');
-      }
+	
+	Ceditor.prototype.saveAs = function saveAs () {
+			if (self.MyConfig.current_doc === null) return -1;
+			 // Showing Save As Dialog
+			  var chooser = $(document.createElement("input")).attr("id","export_file").attr("type","file");
+			  $(chooser).attr("nwsaveas", "").attr("style", "display:none").attr("nwworkingdir", "");
+			  $("body").append(chooser);
+			
+			  function fileHandler (evt) {
+				filename=$(this).val();
+				// Set current name to filename
+				self.MyConfig.current_doc = filename;
+				// And save now
+				self.save();
+			}
+			
+			chooser.change(fileHandler);
+			chooser.trigger('click');
+			return 0;
+			
     }
+		
+	Ceditor.prototype.openDocument = function openDocument(filename){
+		function loadDoc(){
+			self.MyConfig.current_doc=filename;		
+			self.editor.openDocumentFromUrl(MyConfig.current_doc, function(err) {
+				if (err) {
+					// something failed unexpectedly, deal with it (here just a simple alert)
+					alert("There was an error on opening the document: " + err);
+				}
+				console.log($("document"));
+			//$("document").parent().hide();
+			$("document").parent().on('keydown', function(event) {
+			console.log("*****"+event.which);
+			
+			// Comparar a banda del 190 (.) els !, ?, ¡, ¿....
+			if (event.which=='190' && self.MyConfig.SpeechPhrase ) {
+					ret=self.getCurrentPhrase();
+					console.log(ret);
+					meSpeak.speak(ret);
+				} 
+			else if (event.which=='32' && self.MyConfig.SpeechWord ) {
+					ret=self.getCurrentWord();
+					console.log(ret);
+					meSpeak.speak(ret);
+				} 
+			else if (self.MyConfig.SpeechChar) {
+					meSpeak.speak(String.fromCharCode(event.which));
+				}
+					
+				});
+			
+			});
+				
+		}
+		
+		
+		if (self.MyConfig.current_doc === null) loadDoc();
+		else self.editor.closeDocument(function(){ loadDoc();})
+		
+		
+	}
 	
 	Ceditor.prototype.onEditorCreated = function onEditorCreated(err, editor){ // Callback function
 		if (err) {
@@ -122,38 +161,7 @@ function Ceditor(editoritem, MyConfig, FileSaver){
 			alert(err);
 			return;
 		}
-		editor.openDocumentFromUrl(MyConfig.current_doc, function(err) {
-			if (err) {
-				// something failed unexpectedly, deal with it (here just a simple alert)
-				alert("There was an error on opening the document: " + err);
-			}
-			console.log($("document"));
-		//$("document").parent().hide();
-		$("document").parent().on('keydown', function(event) {
-		console.log("*****"+event.which);
-		
-		// Comparar a banda del 190 (.) els !, ?, ¡, ¿....
-		if (event.which=='190' && self.MyConfig.SpeechPhrase ) {
-				ret=self.getCurrentPhrase();
-				console.log(ret);
-				meSpeak.speak(ret);
-			} 
-		else if (event.which=='32' && self.MyConfig.SpeechWord ) {
-				ret=self.getCurrentWord();
-				console.log(ret);
-				meSpeak.speak(ret);
-			} 
-		else if (self.MyConfig.SpeechChar) {
-				meSpeak.speak(String.fromCharCode(event.which));
-			}
-				
-			});
-		
-		});
-		
-		self.editor=editor; // This is the result of createTextEditor
-		
-		
+		self.editor=editor;
 	  }
 		
 	

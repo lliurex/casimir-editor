@@ -5,7 +5,7 @@ function Config(){
 	this.mespeach_dir="js/lib_external/mespeak/";
 	// User settings
 	this.user_dir=process.env['HOME'];
-	this.current_doc="/tmp/coses.odt";
+	this.current_doc=null;
 	
 	//this.checkUserSettings();
 	

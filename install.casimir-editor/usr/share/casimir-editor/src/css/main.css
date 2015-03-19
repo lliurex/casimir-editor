@@ -64,7 +64,7 @@ html{
 	display: block;
 	margin: 10px;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.14), 0px 4px 8px rgba(0, 0, 0, 0.28);
-}
+} 
 
 .swapButton:hover{
     cursor: pointer;
@@ -78,6 +78,19 @@ html{
 .btn_off{
 	background: #418b5d;
 }
+
+#statusbar{
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    height: 20px;
+    background: #eeeeee;
+    position: absolute;
+    bottom: 0px;
+    border-top: 1px solid #aaaaaa;
+    transition: background-color 0.5s ease;
+    
+} 
 
 
 /*document {overflow:scroll; max-height:300px}*/

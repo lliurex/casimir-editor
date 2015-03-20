@@ -1,4 +1,7 @@
 var fs = require('fs');
+var process=require('process');
+var sys = require('sys')
+exec = require('child_process').exec;
 
 function Ceditor(editoritem, MyConfig, FileSaver){
 	// Creates a wodo editor linkjed to editoritem
@@ -113,6 +116,46 @@ function Ceditor(editoritem, MyConfig, FileSaver){
 			return 0;
 			
     }
+	
+	Ceditor.prototype.onNewFile = function onNewFile(){
+		
+		// STEP 1. Create meta.xml for current user from template (uncompressed odt in tmpodf)
+		
+		var xmltext=fs.readFileSync("/usr/share/casimir-editor/templates/tmpodf/meta.xml", 'ascii');
+		var xml=$.parseXML(xmltext);
+		var auth=($(xml).find("initial-creator"))[0];
+		
+		var userName = process.env['USER'];
+		console.log(userName);
+		
+		// Getting full username
+		exec("getent passwd "+userName,
+			 function (error, stdout, stderr){
+				var fullusername="";
+				if (!error) fullusername=(stdout.split(":")[4]).split(",")[0];
+				
+				$(auth).text(fullusername);
+				
+				// Getting current date
+				var ct = new Date();
+				var odfdate=ct.getFullYear()+"-"+(ct.getMonth()+1)+"-"+ct.getDate();
+				odfdate=odfdate+"T"+ct.getHours()+":"+ct.getMinutes()+":"+ct.getSeconds()+"."+ct.getMilliseconds();
+				
+				var date=($(xml).find("creation-date"))[0];
+				$(date).text(odfdate);
+				
+				console.log(xml);
+				
+				// To Do...
+				// a vore si ho pose en funcions més ordenat... queda comprimir el odt,
+				// i copiar-lo a tmp, per obrir-lo, posar un flag en l'editor.js que diga que el document
+				// és temporal, i en la funció save, que detecte si és temporal (pel nom)
+				// i si és així, que invoque a saveas en lloc de save.
+			
+				
+			
+			} );
+		}
 		
 	Ceditor.prototype.openDocument = function openDocument(filename){
 		function loadDoc(){
@@ -162,8 +205,10 @@ function Ceditor(editoritem, MyConfig, FileSaver){
 			return;
 		}
 		self.editor=editor;
+		divertGui(self.onNewFile);
 	  }
 		
+	
 	
 	Wodo.createTextEditor(editoritem, self.editorOptions, self.onEditorCreated); // End CallBack Function
 	

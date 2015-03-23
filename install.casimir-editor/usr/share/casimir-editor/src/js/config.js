@@ -17,6 +17,10 @@ function Config(){
 	this.SpeechChar=true;
 	this.SpeechWord=true;
 	this.SpeechPhrase=true;
+	
+	// Temporal paths
+	this.templatePath='/usr/share/casimir-editor/templates/tmpodf';
+	this.tempDocPath='/tmp/tmpodf';
 }
 
 

@@ -24,6 +24,14 @@ function Config(){
 }
 
 
+Config.prototype.setLang = function setLang(lang){
+	var self=this;
+	// TO DO
+	// Canviar idioma...  lang
+	// --> meSpeak.loadConfig(this.mespeach_dir+"mespeak_config.json");
+	// --> meSpeak.loadVoice(this.mespeach_dir+"voices/es.json");
+	
+}
 
 
 Config.prototype.checkUserSettings = function checkUserSettings(){

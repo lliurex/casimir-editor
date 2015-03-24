@@ -15,7 +15,7 @@ html{
 	cursor:default;
 }
 
-
+/*
 html{
 	padding: 0px;
 	margin: 0px;
@@ -24,10 +24,21 @@ html{
     overflow: hidden;
     -webkit-box-sizing: border-box; 
 }
+*/
 
 #buttonContainer{
     position: absolute;
     left: 0px;
+    top: 100px;
+    width: 100px;
+    height: 300px;
+    z-index: 1;
+}
+
+
+#menuContainer{
+    position: absolute;
+    right: 0px;
     top: 100px;
     width: 100px;
     height: 300px;
@@ -40,6 +51,34 @@ html{
 	width: 100%;
 }
 
+#panelMenu{
+	position: absolute;
+	right: 0px;
+	width: 0px;
+	height: 100%;
+	z-index: 1;
+	background-color: rgba(65, 139, 93, 0.7);
+	display: none;
+}
+
+#closeMenu{
+	position: relative;
+	float: right;
+	margin: 20px;
+	width: 24px;
+	height: 24px;
+	border: 2px solid #ffffff;
+	background-image: url('img/x.png');
+	border-radius: 50%;	
+}
+
+#closeMenu:hover{
+	cursor: pointer;
+}
+
+#menuBt{
+    background-image: url('img/menu.png');
+}
 
 #speechChar{
     background-image: url('img/character.png');
@@ -52,6 +91,15 @@ html{
 
 #speechPhrase{
     background-image: url('img/phrase.png');
+}
+
+#LangContainer{
+	margin-top: 100px;
+	margin-left: 30px;
+	margin-right: 30px;
+	
+	color: #ffffff;
+	font-size: large;
 }
 
 .swapButton{

@@ -1,8 +1,9 @@
 var fs = require('fs');
-var zip = require('./node_modules/adm-zip');
 var fsxtrta = require('./node_modules/fs.extra');
 var process=require('process');
 var sys = require('sys')
+var archiver = require('archiver');
+
 exec = require('child_process').exec;
 
 function Ceditor(){
@@ -18,6 +19,7 @@ function Ceditor(){
 	
 	this.editorOptions = null;
 	
+	this.action=null;
 	
 }
 
@@ -100,83 +102,139 @@ Ceditor.prototype.changeStatus = function changeStatus(text){
 		
 		};
 	
-	Ceditor.prototype.save = function save () {
-		var self=this;
-		
-		if (self.MyConfig.current_doc === null) return -1;
-		
-		function saveByteArrayLocally(err, data) {
-            if (err) {
-                alert(err);
-                return;
-            }
-			// Setting filename
-			var filename = self.MyConfig.current_doc || "doc.odt";
-			// Create a buffer from data
-			var buffer = new Buffer(data.length);
-
-			for (var i = 0; i < data.length; i++) {
-				buffer.writeUInt8(data[i], i);
-			}
-
-			// Write buffer
-				
-			fs.writeFile(filename, buffer);
-            self.editor.setDocumentModified(false);
-        }
-        self.editor.getDocumentAsByteArray(saveByteArrayLocally);
-		self.changeStatus("Saved "+self.MyConfig.current_doc);
-	  
-	  return 0;
-	  
-	  
-    }
+Ceditor.prototype.save = function save () {
+	var self=this;
 	
-	Ceditor.prototype.load = function load () {
-		// Showing FIle Lialog
-		var self=this;
-		
-		var chooser = $(document.createElement("input")).attr("id","fileDialog").attr("type","file");
-		 $(chooser).attr("style", "display:none");
-		 
-		 $("body").append(chooser);
-			
-		function chooseFile(name) {
-			var chooser = $(name);
-			chooser.change(function(evt) {
-					self.openDocument($(this).val());
-					self.changeStatus("Loaded "+$(this).val());
-		  });
-
-		chooser.trigger('click');  
+	function saveByteArrayLocally(err, data) {
+		if (err) {
+			alert(err);
+			return;
 		}
+		// Setting filename
+		var filename = self.MyConfig.current_doc || "doc.odt";
+		// Create a buffer from data
+		var buffer = new Buffer(data.length);
+	
+		for (var i = 0; i < data.length; i++) {
+			buffer.writeUInt8(data[i], i);
+		}
+	
+		// Write buffer
+					
+		fs.writeFile(filename, buffer);
+		self.editor.setDocumentModified(false);
+		
+		// Check if status is creating a new file
+		if (self.action=="newdoc") self.editor.closeDocument(function(){ self.createNewFile()});
+		else if (self.action=="loadFile") self.loadDlg();
+			// Cleaning action
+		self.action=null;
+		
+	}
 			
-		chooseFile('#fileDialog');
+	switch (self.MyConfig.current_doc){
+		case null:
+			return -1;
+			break;
+		case "/tmp/casimir.odt":
+			self.saveAs();
+			break;
+		
+		default:
+			self.editor.getDocumentAsByteArray(saveByteArrayLocally);
+			self.changeStatus("Saved "+self.MyConfig.current_doc);
+			break;
+		}
+	
+  return 0;
+    
+}
+	
+Ceditor.prototype.load = function load () {
+	var self=this;
+	
+	// Check session for save current doc·
+	if (self.MyConfig.current_doc != null) {
+		// Check if doc is modified	
+		if (self.editor.isDocumentModified()) {
+			var r = confirm("Document unsaved. Do you want to save it before?"); // i18n
+				if (r == true) {
+					self.action="loadFile";
+					self.save();
+				}
+		} else self.loadDlg(); //self.editor.closeDocument(function(){ self.loadDlg();})
+	} else self.loadDlg(); // If no doc loaded, no need to check for save, showing dialog
+}
+	
+	
+Ceditor.prototype.loadDlg = function loadDlg () {
+	// Showing FIle Lialog
+	var self=this;
+	
+	var chooser = $(document.createElement("input")).attr("id","fileDialog").attr("type","file");
+	 $(chooser).attr("style", "display:none");
+	 
+	 $("body").append(chooser);
+		
+	function chooseFile(name) {
+		var chooser = $(name);
+		chooser.change(function(evt) {
+				self.openDocument($(this).val());
+				self.changeStatus("Loaded "+$(this).val());
+	  });
+		chooser.trigger('click');  
+	}
+		
+	chooseFile('#fileDialog');
+}
+	
+Ceditor.prototype.saveAs = function saveAs () {
+
+	var self=this;
+	
+	// If no document return
+	if (self.MyConfig.current_doc === null) return false;
+	
+	 // Showing Save As Dialog
+	  var chooser = $(document.createElement("input")).attr("id","export_file").attr("type","file");
+	  $(chooser).attr("nwsaveas", "").attr("style", "display:none").attr("nwworkingdir", "");
+	  $("body").append(chooser);
+	
+	  function fileHandler (evt) {
+		filename=$(this).val();
+		// Check if ends with .odt
+		if (filename.split('.').pop()!="odt") {
+			filename=filename+(".odt");
+		}
+		
+		// Set current name to filename
+		self.MyConfig.current_doc = filename;
+		// And save now
+		self.save();
+		
+		return true;
 	}
 	
+	chooser.bind("abort", function(){
+		alert("abort");
+		});
 	
-	Ceditor.prototype.saveAs = function saveAs () {
-		var self=this;
+	chooser.change(fileHandler);
+	
+	
+	/*document.body.onfocus = function () { setTimeout(function(){
+		console.log($("#export_file")[0]);
 		
-		if (self.MyConfig.current_doc === null) return -1;
-		 // Showing Save As Dialog
-		  var chooser = $(document.createElement("input")).attr("id","export_file").attr("type","file");
-		  $(chooser).attr("nwsaveas", "").attr("style", "display:none").attr("nwworkingdir", "");
-		  $("body").append(chooser);
+		 if($("#export_file").attr("length") == 0) alert('You clicked cancel');
+		document.body.onfocus = null;
+		}, 100); };
+*/
+	
+	chooser.trigger('click');
+	
+	
 		
-		  function fileHandler (evt) {
-			filename=$(this).val();
-			// Set current name to filename
-			self.MyConfig.current_doc = filename;
-			// And save now
-			self.save();
-		}
-		
-		chooser.change(fileHandler);
-		chooser.trigger('click');
-		return 0;
-			
-    }
+   }
 	
 Ceditor.prototype.setUserName = function setUserName(){
 	// Gets username from environment, and searchs full name in passwd
@@ -209,22 +267,22 @@ Ceditor.prototype.setUserName = function setUserName(){
 		var month=(ct.getMonth()+1);
 		if (month<10) month="0"+month;
 		var day=ct.getDate();
-		
-		
-		// TO DO
-		// Ajustant mes a 2 xifres
-		// Cal ajustar els milisegons per a que siguen les xifres que pille el libreoffice
+		if (day<10) day="0"+day;
 		var odfdate=year+"-"+month+"-"+day;
-		alert(odfdate);
 		
 		var hour=ct.getHours();
+		if (hour<10) hour="0"+hour;
 		var min=ct.getMinutes();
+		if (min<10) min="0"+min;
 		var sec=ct.getSeconds();
+		if (sec<10) sec="0"+sec;
 		var ms=ct.getMilliseconds();
-		alert(ms+" "+ms.toPrecision(8));
-		alert(typeof(ms));
+		// Adjust ms to 9 chiphers
+		strms=ms.toString();
+		stuff=Array(10-strms.length).join('0');
+		strms=strms+stuff;
 		
-		odfdate=odfdate+"T"+hour+":"+min+":"+sec+"."+ms;
+		odfdate=odfdate+"T"+hour+":"+min+":"+sec+"."+strms;
 		
 		self.currentDate=odfdate;
 		self.CreateTmpDoc();
@@ -234,6 +292,12 @@ Ceditor.prototype.setUserName = function setUserName(){
 		var self=this;
 		self.TmpOdfPrepared=false;
 		
+		// First remove structure if exists
+		try{
+			fsxtrta.rmrfSync(self.MyConfig.tempDocPath);
+		} catch (err) {
+			alert(err); // Show error
+		}
 		// Copies odf structure from
 		fsxtrta.copyRecursive(self.MyConfig.templatePath , self.MyConfig.tempDocPath, function (err) {
 			if (err) {
@@ -250,6 +314,32 @@ Ceditor.prototype.setUserName = function setUserName(){
 	}
 	
 	
+Ceditor.prototype.createODFFile = function createODFFile(){
+	var self=this;
+	var output = fs.createWriteStream('/tmp/casimir.odt');
+	var archive = archiver('zip');
+		
+	output.on('close', function () {
+		console.log(archive.pointer() + ' total bytes');
+		console.log('archiver has been finalized and the output file descriptor has closed.');
+		
+		// Setting we are working with a tmp file
+		self.MyConfig.current_doc="/tmp/casimir.odt";
+		// and load tmp file
+		self.loadDoc(self.MyConfig.current_doc);
+	});
+	
+	archive.on('error', function(err){
+		throw err;
+	});
+	
+	archive.pipe(output);
+	archive.bulk([
+		{ expand: true, cwd: '/tmp/tmpodf', src: ['**'], dest: '/'}
+	]);
+	archive.finalize();
+	}
+	
 	Ceditor.prototype.CreateTmpDoc = function CreateTmpDoc(){
 		var self=this;
 		
@@ -258,7 +348,7 @@ Ceditor.prototype.setUserName = function setUserName(){
 		// so we can create tmp file
 		
  		// Stablish username
-		//var xmltext=fs.readFileSync("/usr/share/casimir-editor/templates/tmpodf/meta.xml", 'ascii');
+		
 		var xmltext=fs.readFileSync(self.MyConfig.tempDocPath+"/meta.xml", 'ascii');
 		var xml=$.parseXML(xmltext);
 		var auth=($(xml).find("initial-creator"))[0];
@@ -273,58 +363,69 @@ Ceditor.prototype.setUserName = function setUserName(){
 		
 		
 		
-		fs.writeFileSync(self.MyConfig.tempDocPath+"/meta.xml", xmlString, 'ascii');
+		fs.writeFileSync(self.MyConfig.tempDocPath+"/meta.xml", xmlString);
 		
-		
-		
-				
-				// To Do...
-				// queda comprimir el odt,
-				// i copiar-lo a tmp, per obrir-lo, posar un flag en l'editor.js que diga que el document
-				// és temporal, i en la funció save, que detecte si és temporal (pel nom)
-				// i si és així, que invoque a saveas en lloc de save.
-			
-			
+		// Zipping odt file
+		self.createODFFile(); // When finishes, loads document
 		
 		return 0;
 		
 	}
 	
-	Ceditor.prototype.onNewFile = function onNewFile(){
-		var self=this;
-		
-		//alert("123");
-		// Step 1. Find Full Username and Password
-		// Step 2. Fins current date and time
-		// Step 3. Create tmp file -> It will be done after setting username and current date,
-		//         this function will be called from setUserNamd and setCurrentDate.
-		
-		self.fullUsername=null;
-		self.currentDate=null;
-		
-		// Setting UserName
-		self.setUserName();
-		
-		// Setting Date
-		self.setCurrentDate();
+Ceditor.prototype.createNewFile = function createNewFile(){
+	var self=this;
 	
-		// Copying ODF structure	
-		self.copyTmpDocStructure();
+	//alert("123");
+	// Step 1. Find Full Username and Password
+	// Step 2. Fins current date and time
+	// Step 3. Create tmp file -> It will be done after setting username and current date,
+	//         this function will be called from setUserNamd and setCurrentDate.
+	
+	self.fullUsername=null;
+	self.currentDate=null;
+	
+	// Setting UserName
+	self.setUserName();
+	
+	// Setting Date
+	self.setCurrentDate();
+
+	// Copying ODF structure	
+	self.copyTmpDocStructure();
+}
+
+Ceditor.prototype.onNewFile = function onNewFile(){
+	var self=this;
+		
+	// Check session. If no document loaded, create new file, elsewhere, close document first
+	if (self.MyConfig.current_doc === null) self.createNewFile();
+	else {
+		// Check if doc is modified			
+		if (self.editor.isDocumentModified()) {
+			var r = confirm("Document unsaved. Do you want to save it before?"); // i18n
+				if (r == true) {
+					self.action="newdoc";
+					self.save();
+					//self.save(self.editor.closeDocument(function(){ self.createNewFile()}));
+					//self.editor.closeDocument(function(){ self.createNewFile();});
+				}
+		} else self.editor.closeDocument(function(){ self.createNewFile();})
 	}
+		
+}
 	
 	
 Ceditor.prototype.loadDoc=function loadDoc(filename){
 		var self=this;
 	
 		self.MyConfig.current_doc=filename;
-		console.log(self);
-		alert(self.editor);
+		
 		self.editor.openDocumentFromUrl(self.MyConfig.current_doc, function(err) {
 			if (err) {
 				// something failed unexpectedly, deal with it (here just a simple alert)
 				alert("There was an error on opening the document: " + err);
 			}
-			alert("1111");
+			
 			console.log($("document"));
 		//$("document").parent().hide();
 		$("document").parent().on('keydown', function(event) {

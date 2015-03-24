@@ -47,5 +47,31 @@ $("#speechPhrase").bind("click", function(event){
 		}
 	});
 
+	
+$("#menuBt").bind("click", function(event){
+		$("#panelMenu").show();
+		$("#panelMenu").animate({width: '300px'}, 300, function(){
+				$("#menuBt").hide();
+		});
+		
+		
+		})
+				  
+$("#closeMenu").bind("click", function(event){
+		$("#panelMenu").animate({width: '0px'}, 300, function(){
+			$("#panelMenu").hide();
+			$("#menuBt").show();
+		});
+		
+		})
+
+$("#languageSelector").change(function(){
+		$( "select#languageSelector option:selected" ).each(function() {
+		 selected = $( this ).val();
+		 alert(selected);
+		 })
+		
+		});
+
 }
 

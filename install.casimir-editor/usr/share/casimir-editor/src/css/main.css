@@ -67,8 +67,10 @@ html{
 	margin: 20px;
 	width: 24px;
 	height: 24px;
+	padding: 0px;
 	border: 2px solid #ffffff;
 	background-image: url('img/x.png');
+	background-position: center;
 	border-radius: 50%;	
 }
 
@@ -92,6 +94,11 @@ html{
 #speechPhrase{
     background-image: url('img/phrase.png');
 }
+
+#speechSelected{
+    background-image: url('img/play.png');
+}
+
 
 #LangContainer{
 	margin-top: 100px;
@@ -139,6 +146,25 @@ html{
     transition: background-color 0.5s ease;
     
 } 
+
+#savePreferences{
+	float: right;
+	margin-top: 20px;
+	padding: 5px 10px 5px 1px !important;
+}
+
+.tick{
+	width: 24px;
+	height: 24px;
+	margin: 0px;
+	padding: 0px;
+	float: left;
+
+}
+
+.saved{
+	background: url('img/tick.png');
+}
 
 
 /*document {overflow:scroll; max-height:300px}*/

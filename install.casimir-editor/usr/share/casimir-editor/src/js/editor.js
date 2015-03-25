@@ -161,7 +161,8 @@ Ceditor.prototype.load = function load () {
 				if (r == true) {
 					self.action="loadFile";
 					self.save();
-				}
+				} else self.loadDlg(); // cancel save, so load
+				
 		} else self.loadDlg(); //self.editor.closeDocument(function(){ self.loadDlg();})
 	} else self.loadDlg(); // If no doc loaded, no need to check for save, showing dialog
 }
@@ -453,7 +454,7 @@ Ceditor.prototype.loadDoc=function loadDoc(filename){
 	}
 		
 	
-	
+
 Ceditor.prototype.openDocument = function openDocument(filename){
 	var self=this;
 		
@@ -488,13 +489,13 @@ Ceditor.prototype.getCurrentParagraph = function getCurrentParagraph(){
 			
 	var speechtext="";
 	var len=itemtext.indexOf("<|>");
-    var forbidden_chars=["“", "”"];
+    var forbidden_chars=["“", "”", "·"];
 	
 	for (i=0;i<len;i++){
         if (forbidden_chars.indexOf(itemtext[i])==-1) {
                 speechtext=speechtext+itemtext[i];  
         }
-        else alert("found "+itemtext[i]);
+        //else alert("found "+itemtext[i]);
 		
 	}
 				
@@ -516,6 +517,39 @@ Ceditor.prototype.getCurrentWord =function getCurrentWord() {
 	word=reverse_word.split("").reverse().join("");
 	return word;		
 }
+
+Ceditor.prototype.speechSelected =function speechSelected() {
+	var self=this;
+	
+	//p=self.getCurrentParagraph();
+	position=$("anchor").next()[0];
+	
+	if (position===undefined) text=($("cursor")[0].nextSibling.nodeValue);
+	 else text=($("anchor")[0].nextSibling.nodeValue);
+	
+	// Clean text before
+	
+	var speechtext="";
+	var len=text.length;
+    var forbidden_chars=["“", "”", "·"];
+	
+	for (i=0;i<len;i++){
+        if (forbidden_chars.indexOf(text[i])==-1) {
+                speechtext=speechtext+text[i];  
+        }
+	}
+	console.log(text);			
+	console.log(speechtext);			
+	
+	meSpeak.speak(speechtext);
+		
+	//console.log($("anchor")[0].nextSibling.nodeValue);
+	 //memberId="localuser"
+}
+
+
+
+
 
 Ceditor.prototype.getCurrentPhrase=function getCurrentPhrase() {
 	var self=this;

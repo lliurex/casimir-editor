@@ -1,6 +1,6 @@
 function GUI(){ }
 
-GUI.prototype.bindGUIEvents = function bindGUIEvents(MyConfig) {
+GUI.prototype.bindGUIEvents = function bindGUIEvents(MyConfig, MyEditor) {
 	// Binging GUI Events
 $("#speechChar").bind("click", function(event){
 		button=event.currentTarget;
@@ -32,6 +32,10 @@ $("#speechWord").bind("click", function(event){
 		}
 	});
 
+$("#speechSelected").bind("click", function(event){
+		MyEditor.speechSelected();
+	});
+
 $("#speechPhrase").bind("click", function(event){
 		button=event.currentTarget;
 		if ($(button).attr("status")=="on"){
@@ -58,6 +62,7 @@ $("#menuBt").bind("click", function(event){
 		})
 				  
 $("#closeMenu").bind("click", function(event){
+		$("div.tick").removeClass("saved");
 		$("#panelMenu").animate({width: '0px'}, 300, function(){
 			$("#panelMenu").hide();
 			$("#menuBt").show();
@@ -68,10 +73,15 @@ $("#closeMenu").bind("click", function(event){
 $("#languageSelector").change(function(){
 		$( "select#languageSelector option:selected" ).each(function() {
 		 selected = $( this ).val();
-		 alert(selected);
+		 //alert(selected);
+		 MyConfig.setLang(selected);
 		 })
 		
 		});
 
+$("#savePreferences").bind("click", function(){
+		MyConfig.savePreferences();
+		$("div.tick").addClass("saved");
+		});
 }
 

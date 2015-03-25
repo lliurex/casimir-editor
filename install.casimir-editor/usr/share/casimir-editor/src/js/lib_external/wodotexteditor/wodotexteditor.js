@@ -693,6 +693,7 @@ window.Wodo = window.Wodo || (function () {
             // Not nice to do this on body, but then there is no other way known
             // to style also all dialogs, which are attached directly to body
             document.body.classList.add("claro");
+            
 
             // prevent browser translation service messing up internal address system
             // TODO: this should be done more centrally, but where exactly?

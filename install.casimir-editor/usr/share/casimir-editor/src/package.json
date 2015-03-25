@@ -8,8 +8,8 @@
   ],
   "window": {
     "title": "Editor Casimir",
-    "icon": "logo.png",
-    "toolbar": true,
+    "icon": "/usr/share/pixmaps/casimir-editor.png",
+    "toolbar": false,
     "frame": true,
     "width": 1024,
     "height": 768,

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+NoDisplay=false
+Icon=/usr/share/pixmaps/casimir-editor.png
+Type=Application
+Categories=Office;Education;;
+Exec=/usr/bin/casimir-editor.desktop
+GenericName=Casimir Editor
+Comment=Text editor for dyslexic people.
+
+

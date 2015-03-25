@@ -1,5 +1,7 @@
 <html>
 	<head>
+		<meta charset="UTF-8">
+			
 		<!-- External common libs-->
 		<script type="text/javascript" src="js/lib_external/jquery/jquery.min.js"></script>
 		<script type="text/javascript" src="js/lib_external/jquery-ui/jquery-ui.min.js"></script>
@@ -39,6 +41,7 @@
     <div id="speechChar" class="swapButton btn_on" status="on"></div>
 	<div id="speechWord" class="swapButton btn_on" status="on"></div>
 	<div id="speechPhrase" class="swapButton btn_on" status="on"></div>
+	<div id="speechSelected" class="swapButton btn_on" status="on"></div>
 </div>
 
 <div id="menuContainer">
@@ -50,9 +53,11 @@
 		<div id="langLabel">Language</div>
 		<div id="langSelector">
 			<select class="form-control" id="languageSelector">
-				<option value="es">Castellà</option>
 				<option value="ca">Valencià</option>
+				<option value="es">Castellà</option>
+				<option value="en/en">Anglès</option>
 			</select>
+			<button type="button" class="btn btn-default" id="savePreferences"><div class="tick"></div>Save</button>
 		</div>
 	</div>
 </div>

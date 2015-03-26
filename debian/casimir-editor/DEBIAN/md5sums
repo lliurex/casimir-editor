@@ -1,5 +1,5 @@
 243d433cba8d8be828a339c399dac3ce  usr/bin/casimir-editor.sh
-1582782d8d4346886cf874e66894a8bc  usr/share/applications/casimir-editor.desktop
+797d41be1e6cb24454f7ec8d29106efe  usr/share/applications/casimir-editor.desktop
 3b296f8f66f23f9275e95e22fda2bb84  usr/share/casimir-editor/Gruntfile.js
 b5072b5c216a979c9cf6d284527919d2  usr/share/casimir-editor/package.json
 d9e57a9d76f01f9e8c4511fc26b2f5f4  usr/share/casimir-editor/src/css/fonts/OpenDyslexic-Bold.woff
@@ -16,7 +16,7 @@ ac64b82fd65b7336c28ddc1ca0ccb4d7  usr/share/casimir-editor/src/css/img/word.png
 f5ca2d99b79526b7219055495b355ecb  usr/share/casimir-editor/src/css/main.css
 dd961725c2d0ca1197f9dec332256478  usr/share/casimir-editor/src/index.html
 dabab8378806ff98ead128c47e40e63d  usr/share/casimir-editor/src/js/config.js
-76ac8fd7e37f70bb7e851bdb148861dc  usr/share/casimir-editor/src/js/editor.js
+0c8685fedca605cfc09133f49862b185  usr/share/casimir-editor/src/js/editor.js
 832b972e52f7fd628450f305f081572e  usr/share/casimir-editor/src/js/gui.js
 984752a917db747c89f9e40972cb319a  usr/share/casimir-editor/src/js/lib/gui/i18n.js
 c6d9c912f52f527747d34d38c55ba632  usr/share/casimir-editor/src/js/lib/util/debug.js

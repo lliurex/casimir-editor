@@ -1,4 +1,10 @@
-casimir-editor (0.1) unstable; urgency=low
+casimir-editor (0.2) trusty; urgency=high
+
+  * Almost all functionality done
+
+ -- José A. Murcia <joamuran@gmail.com>  Thu, 26 Mar 2015 09:16:33 +0100
+
+casimir-editor (0.1) trusty; urgency=low
 
   * Initial Release.
 

@@ -444,7 +444,9 @@ Ceditor.prototype.loadDoc=function loadDoc(filename){
 				meSpeak.speak(ret);
 			} 
 		else if (self.MyConfig.SpeechChar) {
-				meSpeak.speak(String.fromCharCode(event.which));
+				if (event.which>64 && event.which<91) {
+					meSpeak.speak(String.fromCharCode(event.which));
+				}
 			}
 				
 			});

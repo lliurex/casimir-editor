@@ -10,6 +10,13 @@ Homepage: http://www.lliurex.net
 
 Package: casimir-editor
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${misc:Depends}
+# Depends too of nw > 12
 Description: Text editor for dyslexics
  WebODF text editor for dyslexics
+
+Package: casimir-naturalreaders-launcher
+Architecture: any
+Depends: ${misc:Depends}, google-chrome-stable
+Description: Natural Readers
+ Natural Readers Link for Google Chrome

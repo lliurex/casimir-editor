@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Icon=/usr/share/pixmaps/casimir-naturalreaders-launcher.png
+Type=Application
+Categories=Office;Education;Network;WebBrowser;
+Exec=google-chrome --app=http://www.naturalreaders.com/onlinetts.php
+Name=Natural Readers Launcher
+Comment=Google Chrome Natural Readers Launcher

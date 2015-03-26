@@ -14,7 +14,7 @@ df32a58f448762d7057c466c4ab63ae6  usr/share/casimir-editor/src/css/img/phrase.pn
 ac64b82fd65b7336c28ddc1ca0ccb4d7  usr/share/casimir-editor/src/css/img/word.png
 3cd15e044fbe5d657f99bfb4c58c0895  usr/share/casimir-editor/src/css/img/x.png
 f5ca2d99b79526b7219055495b355ecb  usr/share/casimir-editor/src/css/main.css
-dd961725c2d0ca1197f9dec332256478  usr/share/casimir-editor/src/index.html
+a33024b6bc7939776321b4965e531c62  usr/share/casimir-editor/src/index.html
 dabab8378806ff98ead128c47e40e63d  usr/share/casimir-editor/src/js/config.js
 0c8685fedca605cfc09133f49862b185  usr/share/casimir-editor/src/js/editor.js
 832b972e52f7fd628450f305f081572e  usr/share/casimir-editor/src/js/gui.js
@@ -26,9 +26,9 @@ ae558475d0292a3e3a3a098f330feb29  usr/share/casimir-editor/src/js/lib/util/util.
 b736ffff99b73a50709d340433d36d4c  usr/share/casimir-editor/src/js/lib_external/bootstrap/css/bootstrap-theme.min.css
 f54abbc7753386d0ccae6747cb4955b6  usr/share/casimir-editor/src/js/lib_external/bootstrap/css/bootstrap.css
 ef3be58df463e724829d61b70bbe5166  usr/share/casimir-editor/src/js/lib_external/bootstrap/css/bootstrap.min.css
-870b75c273a97501e7d1fb27776bafd0  usr/share/casimir-editor/src/js/lib_external/jquery-ui/jquery-ui.min.js
+04a4db2983450a2970c459ba87b4210a  usr/share/casimir-editor/src/js/lib_external/jquery-ui/jquery-ui.min.js
 0e90c245c086202a8031151fd53b3dd6  usr/share/casimir-editor/src/js/lib_external/jquery-xmlrpclib/jquery.xmlrpc.js
-5790ead7ad3ba27397aedfa3d263b867  usr/share/casimir-editor/src/js/lib_external/jquery/jquery.min.js
+c0b3962f9f23a89256a055c89a4aecf6  usr/share/casimir-editor/src/js/lib_external/jquery/jquery.min.js
 a38945f0539f11acc9a6375cf48510ec  usr/share/casimir-editor/src/js/lib_external/mespeak/deferred-call-demo.html
 253b57ea05bb5eb686c45c02539ddba6  usr/share/casimir-editor/src/js/lib_external/mespeak/index.html
 8f4c3364d4ed930f803b6f5eb5c45f62  usr/share/casimir-editor/src/js/lib_external/mespeak/mespeak.full.js
@@ -1337,6 +1337,6 @@ a8f832e66eef7b5b62c19e8802da6c58  usr/share/casimir-editor/templates/tmpodf/meta
 12fbdab5e8e99fd318f5fbdcdc92670a  usr/share/casimir-editor/templates/tmpodf/mimetype
 95b79e3f7298a6099033c74c294e1471  usr/share/casimir-editor/templates/tmpodf/settings.xml
 d3280aa143c3b4daaebe34a756c4af9c  usr/share/casimir-editor/templates/tmpodf/styles.xml
-3618c627aacc92c0a0327653fadf5592  usr/share/doc/casimir-editor/changelog.gz
+48472b5d0217514fc2d4f971da522112  usr/share/doc/casimir-editor/changelog.gz
 7c1bac0627736f9661850ad2d0835f09  usr/share/doc/casimir-editor/copyright
 b67c06425da9698a20d9cfa11d8b4b93  usr/share/pixmaps/casimir-editor.png

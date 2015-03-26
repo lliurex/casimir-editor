@@ -1,8 +1,8 @@
 Package: casimir-editor
-Version: 0.1
+Version: 0.2
 Architecture: i386
 Maintainer: Jose A. Murcia <joamuran@gmail.com>
-Installed-Size: 14685
+Installed-Size: 15094
 Section: unknown
 Priority: optional
 Homepage: http://www.lliurex.net

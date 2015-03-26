@@ -4,6 +4,6 @@ Terminal=false
 Icon=/usr/share/pixmaps/casimir-editor.png
 Type=Application
 Categories=Office;Education;
-Exec=/usr/bin/casimir-editor.sh
+Exec=/usr/bin/casimir-editor
 Name=Casimir Editor
 Comment=Text editor for dyslexic people.

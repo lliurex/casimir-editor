@@ -1,5 +1,5 @@
 243d433cba8d8be828a339c399dac3ce  usr/bin/casimir-editor
-797d41be1e6cb24454f7ec8d29106efe  usr/share/applications/casimir-editor.desktop
+a921df8bc1e010678fef6a3210a9c92f  usr/share/applications/casimir-editor.desktop
 3b296f8f66f23f9275e95e22fda2bb84  usr/share/casimir-editor/Gruntfile.js
 b5072b5c216a979c9cf6d284527919d2  usr/share/casimir-editor/package.json
 d9e57a9d76f01f9e8c4511fc26b2f5f4  usr/share/casimir-editor/src/css/fonts/OpenDyslexic-Bold.woff
@@ -1339,5 +1339,5 @@ a8f832e66eef7b5b62c19e8802da6c58  usr/share/casimir-editor/templates/tmpodf/meta
 d3280aa143c3b4daaebe34a756c4af9c  usr/share/casimir-editor/templates/tmpodf/styles.xml
 48472b5d0217514fc2d4f971da522112  usr/share/doc/casimir-editor/changelog.gz
 8bfcd4b7f0d5853c25155648b576f38a  usr/share/doc/casimir-editor/copyright
-c677f59c036228c23c5f9b362bca280c  usr/share/lintian/overrides/casimir-editor
+3012cc805dd3299acd68d72e017e27f7  usr/share/lintian/overrides/casimir-editor
 b67c06425da9698a20d9cfa11d8b4b93  usr/share/pixmaps/casimir-editor.png

@@ -13,6 +13,7 @@ function Config(){
 	meSpeak.loadConfig(this.mespeach_dir+"mespeak_config.json");
 	
 	this.current_lang="es"; // es by default
+	this.speakoptions={amplitude: 100, pitch: 50, speed: 175, wordgap: 0, variant: "f2"};
 	this.checkUserSettings();
 	//this.setLang("es"); ->  moved into checkUserSettings
 	

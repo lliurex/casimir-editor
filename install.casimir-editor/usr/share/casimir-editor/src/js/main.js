@@ -15,6 +15,7 @@ $(document).ready(function() {
 	
 	var MyEditor=new Ceditor();
 	
+	mygui.drawMenuElements();
 	mygui.bindGUIEvents(MyConfig, MyEditor);
 	MyEditor.Initialize('editorContainer', MyConfig);
 

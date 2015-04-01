@@ -436,16 +436,16 @@ Ceditor.prototype.loadDoc=function loadDoc(filename){
 		if (event.which=='190' && self.MyConfig.SpeechPhrase ) {
 				ret=self.getCurrentPhrase();
 				console.log(ret);
-				meSpeak.speak(ret);
+				meSpeak.speak(ret, self.MyConfig.speakoptions);
 			} 
 		else if (event.which=='32' && self.MyConfig.SpeechWord ) {
 				ret=self.getCurrentWord();
 				console.log(ret);
-				meSpeak.speak(ret);
+				meSpeak.speak(ret, self.MyConfig.speakoptions);
 			} 
 		else if (self.MyConfig.SpeechChar) {
 				if (event.which>64 && event.which<91) {
-					meSpeak.speak(String.fromCharCode(event.which));
+					meSpeak.speak(String.fromCharCode(event.which), self.MyConfig.speakoptions);
 				}
 			}
 				
@@ -543,7 +543,7 @@ Ceditor.prototype.speechSelected =function speechSelected() {
 	console.log(text);			
 	console.log(speechtext);			
 	
-	meSpeak.speak(speechtext);
+	meSpeak.speak(speechtext, self.MyConfig.speakoptions);
 		
 	//console.log($("anchor")[0].nextSibling.nodeValue);
 	 //memberId="localuser"

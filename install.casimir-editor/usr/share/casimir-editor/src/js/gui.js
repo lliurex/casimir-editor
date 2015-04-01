@@ -83,5 +83,24 @@ $("#savePreferences").bind("click", function(){
 		MyConfig.savePreferences();
 		$("div.tick").addClass("saved");
 		});
+
+
+
 }
 
+
+
+
+
+GUI.prototype.drawMenuElements = function drawMenuElements() {
+// Menu Options
+
+// NO VA!!
+
+		$('#volume_slider').slider({
+          	formatter: function(value) {
+            	return 'Current value: ' + value;
+          	}
+        });
+
+}

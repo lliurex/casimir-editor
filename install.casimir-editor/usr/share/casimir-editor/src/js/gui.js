@@ -2,6 +2,8 @@ function GUI(){ }
 
 GUI.prototype.bindGUIEvents = function bindGUIEvents(MyConfig, MyEditor) {
 	// Binging GUI Events
+    var self=this;
+    
 $("#speechChar").bind("click", function(event){
 		button=event.currentTarget;
 		if ($(button).attr("status")=="on"){
@@ -80,10 +82,18 @@ $("#languageSelector").change(function(){
 		});
 
 $("#savePreferences").bind("click", function(){
+	
+	MyConfig.amplitude=Math.round($("#vol_slider_value").val());
+	MyConfig.pitch=Math.round($("#pitch_slider_value").val());
+	MyConfig.speed=Math.round($("#speed_slider_value").val());
+	MyConfig.word_gap=Math.round($("#wordgap_slider_value").val());
+					
+	
 		MyConfig.savePreferences();
 		$("div.tick").addClass("saved");
 		});
 
+        //self.drawMenuElements();
 
 
 }
@@ -92,15 +102,54 @@ $("#savePreferences").bind("click", function(){
 
 
 
-GUI.prototype.drawMenuElements = function drawMenuElements() {
+GUI.prototype.drawMenuElements = function drawMenuElements(Conf) {
 // Menu Options
 
-// NO VA!!
 
-		$('#volume_slider').slider({
-          	formatter: function(value) {
-            	return 'Current value: ' + value;
-          	}
-        });
+	var vol_slider = document.getElementById('vol_slider');	
+	noUiSlider.create(vol_slider, {
+		start: Conf.amplitude,
+		//tooltips: [ true, wNumb({ decimals: 0 }) ],
+		connect: 'lower',
+		range: { 'min': 0, 'max': 200 }
+	});
+	vol_slider.noUiSlider.on('update', function( values, handle ) {
+		$("#vol_slider_value").val(values[handle]); 	});
 
+	
+	
+	
+	
+	var pitch_slider = document.getElementById('pitch_slider');	
+	noUiSlider.create(pitch_slider, {
+		start: Conf["pitch"],
+		//tooltips: [ true, wNumb({ decimals: 0 }) ],
+		connect: 'lower',
+		range: { 'min': 0, 'max': 100 }
+	});
+	pitch_slider.noUiSlider.on('update', function( values, handle ) {
+		$("#pitch_slider_value").val(values[handle]); 	});
+	
+	
+	var speed_slider = document.getElementById('speed_slider');
+	noUiSlider.create(speed_slider, {
+		start: Conf["speed"],
+		//tooltips: [ true, wNumb({ decimals: 0 }) ],
+		connect: 'lower',
+		range: { 'min': 0, 'max': 350 }
+	});
+	speed_slider.noUiSlider.on('update', function( values, handle ) {
+		$("#speed_slider_value").val(values[handle]); 	});
+	
+	var wordgap_slider = document.getElementById('wordgap_slider');	
+	noUiSlider.create(wordgap_slider, {
+		start: Conf["word_gap"],
+		//tooltips: [ true, wNumb({ decimals: 0 }) ],
+		connect: 'lower',
+		range: { 'min': 0, 'max': 10 }
+	});
+	wordgap_slider.noUiSlider.on('update', function( values, handle ) {
+		$("#wordgap_slider_value").val(values[handle]); 	});
+	
 }
+

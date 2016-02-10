@@ -97,7 +97,7 @@
               s2.selectedIndex=i;
               meSpeak.loadVoice('voices/'+params.voice+'.json', function(success, message) {
                 if (success) {
-                  if (speakNow) speakNow();
+                  if (speakNow) setTimeout(speakNow, 10);
                 }
                 else {
                   if (window.console) console.log('Failed to load requested voice: '+message);
@@ -340,7 +340,7 @@
   	Separating the code of the library from config-data and voice definitions should help future optimizations of the core part of <a href="http://syntensity.com/static/espeak.html" target="_blank">speak.js</a>.<br />
   	All separated data has been compressed to base64-encoded strings from the original binary files to save some bandwidth (compared to JS-arrays of raw 8-bit data).<br />
   	Browser requirements: Firefox, Chrome/Opera, Webkit, and Safari (MSIE11 is expected to be compliant).<br /><br />
-  	meSpeak.js 2011-2014 by Norbert Landsteiner, mass:werk &ndash; media environments; <a href="http://www.masswerk.at/mespeak/">http://www.masswerk.at/mespeak/</a><br /><br />
+  	meSpeak.js 2011-2015 by Norbert Landsteiner, mass:werk &ndash; media environments; <a href="http://www.masswerk.at/mespeak/">http://www.masswerk.at/mespeak/</a><br /><br />
   	<strong>Important Changes:</strong><br /><br />
   	<strong>v.1.1</strong> adds support for the <em>Web Audio API</em> (AudioContext), which is now the preferred option for playback with the HTMLAudioElement as a fall-back.<br />Thanks to the new method of playback meSpeak.js was tested successfully with iOS/Safari (iOS 6).<br />
   	Also starting with v.1.1 there is now an option to rather export the raw speech-data than playing the sound (see: options, &quot;rawdata&quot;).<br /><br />
@@ -351,7 +351,8 @@
   	<strong>v 1.9</strong> adds <tt>meSpeak.stop()</tt> in order to stop all sounds or one or more spefic sound(s).<br /><br />
   	<strong>v 1.9.3</strong> adds support for the complete Basic Latin and Latin-1 Supplement Unicode range (U+0000 .. U+00FF).<br /><br />
   	<strong>v 1.9.4</strong> meSpeak now recovers gracefully and transparently from any internal FS errors (which might show up at the 80th call to <tt>meSpeak.speak()</tt>).<br /><br />
-  	<strong>v 1.9.5</strong> Added <tt><a href="multipartExample.html">meSpeak.speakMultipart()</a></tt> in order to combine multiple voices.
+  	<strong>v 1.9.5</strong> Added <tt><a href="multipartExample.html">meSpeak.speakMultipart()</a></tt> in order to combine multiple voices.<br /><br />
+  	<strong>v 1.9.7.1</strong> <em>Important Upadate</em> &mdash; Fixes for changes in Web Audio API in Apple Safari 9.x (iOS and Mac OS X).
   </p>
   <p>Some <strong>real world examples</strong> (at masswerk.at):<br />
     &bull; Explore client-side speech I/O with <a href="http://www.masswerk.at/eliza/" target="_blank">E.L.I.Z.A. Talking</a><br />
@@ -684,9 +685,10 @@ Please note that you still need a user-interaction at the very beginning of the 
   <a name="download" id="download"></a>
   <h3>Source</h3>
   <p><strong>Download</strong> (all code under GPL): <a href="http://www.masswerk.at/mespeak/mespeak.zip">mespeak.zip</a><br />
-  (v.1.9.6, last update: 2014-02-11 13:30 GMT)</p>
+  (v.1.9.7.1, last update: 2015-10-07 13:00 GMT)</p>
   <h3>Version History</h3>
   <dl class="history">
+  <dt>v.1.9.7.1</dt><dd>Fix for Web Audio API changes in Apple Safari 9.x (Mac OS X and iOS, compare v.1.9.2).</dd>
   <dt>v.1.9.6</dt><dd>Minor internal changes.</dd>
   <dt>v.1.9.5</dt><dd>Added <tt>meSpeak.speakMultipart()</tt>.<br />Also, <tt>meSpeak.speak()</tt> and <tt>meSpeak.speakMultipart()</tt> won't fail on a missing voice any more: As soon as there is a default-voice loaded and set, the default-voice will be used instead.</dd>
   <dt>v.1.9.4.1</dt><dd>Fixed a bug in the error handling on missing voices.</dd>

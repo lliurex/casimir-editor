@@ -57,20 +57,28 @@ html{
 	width: 0px;
 	height: 100%;
 	z-index: 1;
-	background-color: rgba(65, 139, 93, 0.7);
+	//background-color: rgba(139, 195, 74, 0.7);
+    background-color: rgba(255, 255, 255, 0.7);
+    color: #000000;
 	display: none;
+    padding: 80px 15px 0px 15px;
+    border-left: 3px solid #009688;
 }
 
 #closeMenu{
 	position: relative;
 	float: right;
-	margin: 20px;
+	margin: -60px 20px 20px 20px;
 	width: 24px;
 	height: 24px;
 	padding: 0px;
-	border: 2px solid #ffffff;
-	background-image: url('img/x.png');
-	background-position: center;
+	border: 2px solid #009688;
+	/*background-image: url('img/x.png');
+	background-position: center;*/
+    color: #009688;
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
 	border-radius: 50%;	
 }
 
@@ -100,13 +108,17 @@ html{
 }
 
 
-#LangContainer{
-	margin-top: 100px;
-	margin-left: 30px;
-	margin-right: 30px;
-	
-	color: #ffffff;
-	font-size: large;
+.textmenu{
+    font-weight: bold;
+    font-size: medium;
+}
+.OptionsContent{
+	/*margin-top: 100px;
+	/*margin-left: 30px;
+	margin-right: 30px;*/
+    margin-top: 20px;
+	color: #555555;
+	font-size: medium;
 }
 
 .swapButton{
@@ -123,15 +135,16 @@ html{
 
 .swapButton:hover{
     cursor: pointer;
+    background: #ececec;
     }
 
 .btn_on{
 	/*background: -webkit-linear-gradient(#99e8a6, #418b5d);*/
-     background: #99e8a6;
+     background: #009688;
 }
 
 .btn_off{
-	background: #418b5d;
+	background: #cccccc;
 }
 
 #statusbar{

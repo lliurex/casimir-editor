@@ -15,9 +15,16 @@ $(document).ready(function() {
 	
 	var MyEditor=new Ceditor();
 	
-	mygui.drawMenuElements();
+	console.log(MyConfig);
+	
+	mygui.drawMenuElements(MyConfig);
 	mygui.bindGUIEvents(MyConfig, MyEditor);
 	MyEditor.Initialize('editorContainer', MyConfig);
+	
+	//$("#statusbar").slider();
+	
+	
+	$.material.init();
 
    
 });  // End Document Ready

@@ -5,15 +5,19 @@
 		<!-- External common libs-->
 		<script type="text/javascript" src="js/lib_external/jquery/jquery.min.js"></script>
 		<script type="text/javascript" src="js/lib_external/jquery-ui/jquery-ui.min.js"></script>
-		<script type="text/javascript" src="js/lib_external/bootstrap-slider/bootstrap-slider.min.js"></script>
+		<!--script type="text/javascript" src="js/lib_external/bootstrap-slider/bootstrap-slider.js"></script-->
 		
 		<script type="text/javascript" src="js/lib_external/jquery-xmlrpclib/jquery.xmlrpc.js"></script>
+		<script type="text/javascript" src="js/lib_external/material/js/material.min.js"></script>
+		<script type="text/javascript" src="js/lib_external/noUiSlider/nouislider.min.js"></script>
 		<!--script type="text/javascript" src="node_modules/fs.extra/fs.extra.js"></script-->
 
 		<!-- External specific libs-->
 		<script type="text/javascript" src="js/lib_external/wodotexteditor/wodotexteditor.js" ></script>
 		<script type="text/javascript" src="js/lib_external/mespeak/mespeak.full.js"></script>
-
+		
+		
+		
 		<!-- Node Modules -->
 		<script type="text/javascript" src="node_modules/jed/jed.js"></script>
 		<!--script type="text/javascript" src="node_modules/adm-zip/zipFile.js"></script>
@@ -28,8 +32,16 @@
 		
 		<!-- Files application -->
 		<link rel="stylesheet" type="text/css" href="js/lib_external/bootstrap/css/bootstrap.css">
-		<link rel="stylesheet" type="text/css" href="js/lib_external/bootstrap-slider/css/bootstrap-slider.css">
+		<!--link rel="stylesheet" type="text/css" href="js/lib_external/bootstrap-slider/css/bootstrap-slider.css"-->
+		<link rel="stylesheet" type="text/css" href="js/lib_external/material/css/ripples.css">
+		<link rel="stylesheet" type="text/css" href="js/lib_external/material/css/bootstrap-material-design.css">
+		<!--link rel="stylesheet" type="text/css" href="js/lib_external/noUiSlider/nouislider.css"-->
+		<link rel="stylesheet" type="text/css" href="js/lib_external/noUiSlider/nouislider.tooltips.css">
+		<link rel="stylesheet" type="text/css" href="js/lib_external/noUiSlider/nouislider.pips.css">
+		<link rel="stylesheet" type="text/css" href="css/nouislider.material.css">
 		<link rel="stylesheet" type="text/css" href="css/main.css">
+		
+		
 		<script src="js/config.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/editor.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/gui.js" type="text/javascript" charset="utf-8"></script>
@@ -42,6 +54,7 @@
 		
 <div id="buttonContainer">
     <div id="speechChar" class="swapButton btn_on" status="on"></div>
+	<!--div id="speechChar" class="btn btn-default btn-fab" status="on"></div-->
 	<div id="speechWord" class="swapButton btn_on" status="on"></div>
 	<div id="speechPhrase" class="swapButton btn_on" status="on"></div>
 	<div id="speechSelected" class="swapButton btn_on" status="on"></div>
@@ -51,26 +64,55 @@
     <div id="menuBt" class="swapButton btn_on" status="on"></div>
 </div>
 <div id="panelMenu">
-	<div id="closeMenu"></div>
-	<div id="LangContainer">
-		<div id="langLabel">Language</div>
+	<div id="closeMenu">></div>
+	<div id="LangContainer" class="OptionsContent">
+		<div id="langLabel" class="textmenu">Language</div>
 		<div id="langSelector">
 			<select class="form-control" id="languageSelector">
 				<option value="ca">Valencià</option>
 				<option value="es">Castellà</option>
 				<option value="en/en">Anglès</option>
 			</select>
-			<button type="button" class="btn btn-default" id="savePreferences"><div class="tick"></div>Save</button>
-		</div>
+		</div> <!-- langselector -->
+	</div>	 <!-- langContainer-->
+	
+	<div class="OptionsContent">
+		<div id="amplitude" class="textmenu">Amplitude</div>	
+		<div id="vol_slider"></div>
+		<input type="text" id="vol_slider_value" style="display: none"></input>
 	</div>
 	
-	<div  id="volume_slider"  data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14">aa</div>
+	<div class="OptionsContent">
+		<div id="pitch" class="textmenu">Pitch</div>	
+		<div id="pitch_slider"></div>
+		<input type="text" id="pitch_slider_value" style="display: none"></input>
+	</div>
+	
+	<div class="OptionsContent">
+		<div id="speed" class="textmenu">Speed</div>	
+		<div id="speed_slider"></div>
+		<input type="text" id="speed_slider_value" style="display: none"></input>
+	</div>
+	
+	<div class="OptionsContent">
+		<div id="wordgap" class="textmenu">Word Gap</div>	
+		<div id="wordgap_slider"></div>
+		<input type="text" id="wordgap_slider_value" style="display: none"></input>
+	</div>
+	
+	<button type="button" class="btn btn-default" id="savePreferences"><div class="tick"></div>Save</button>
+	
+	
+	
+	<!--div  id="volume_slider_Container" class="slider shor">
+		<!--input id="volume_slider" data-slider-id='vol_slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/-- >
+	</div-->
 	
 	
 	
 	<!-- {amplitude: 100, pitch: 50, speed: 175, wordgap: 0, variant: "f2"}; -->
 	
-</div>
+</div> <!-- panelmenu -->
 
 
 <!-- WebODF Editor -->

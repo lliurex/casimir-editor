@@ -53,8 +53,12 @@ Ceditor.prototype.Initialize = function Initialize (editoritem, MyConfig){
 			alert(err);
 			return;
 		}
-		self.editor=editor;
-		self.divertGui();
+		// Wait a bit for ready editor
+		setTimeout(function(){
+		    self.editor=editor;
+			self.divertGui();
+		}, 500);
+		
 		
 	});
 	
@@ -71,7 +75,7 @@ Ceditor.prototype.divertGui = function divertGui(){
 	var openButton=$("span[widgetid='dijit_form_Button_0']");
 	newButton=$(openButton).clone(true);
 	
-	$(newButton).find(".dijitIconFolderOpen").removeClass("dijitIconFolderOpen").addClass("dijitLeaf");
+	$(newButton).find(".webodfeditor-dijitWebODFIcon").removeClass("webodfeditor-dijitWebODFIcon").addClass("dijitLeaf");
 	$(newButton).find("#dijit_form_Button_0").attr("title", "New");
 	
 	$(newButton).insertBefore(openButton);
@@ -86,7 +90,9 @@ Ceditor.prototype.divertGui = function divertGui(){
 	$(newButton).on("click", function(){
 			self.onNewFile();
 			
-		})	
+		})
+	$(openButton).remove();
+	
 	}
 	
 Ceditor.prototype.changeStatus = function changeStatus(text){

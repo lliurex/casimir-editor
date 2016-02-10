@@ -1,8 +1,8 @@
 var fs = require('fs');
 
 function Config(){
-	// mespeach config
-	this.mespeach_dir="js/lib_external/mespeak/";
+	// mespeak config
+	this.mespeak_dir="js/lib_external/mespeak/";
 	// User settings
 	this.user_dir=process.env['HOME'];
 	this.current_doc=null;
@@ -10,11 +10,20 @@ function Config(){
 	
 	
 	// Setting Voices
-	meSpeak.loadConfig(this.mespeach_dir+"mespeak_config.json");
+	meSpeak.loadConfig(this.mespeak_dir+"mespeak_config.json");
 	
 	this.current_lang="es"; // es by default
-	this.speakoptions={amplitude: 100, pitch: 50, speed: 175, wordgap: 0, variant: "f2"};
+	// espeak default config
+	this.amplitude=100;
+	this.pitch=50;
+	this.speed=175;
+	this.word_gap=0;
+		
+	this.speakoptions={amplitude: this.amplitude, pitch: this.pitch, speed: this.speed, wordgap: this.word_gap, variant: "f2"};
 	this.checkUserSettings();
+	
+	// MIRAR XQ AÇÒ NO HO ACABA DE PILLAR...
+	
 	//this.setLang("es"); ->  moved into checkUserSettings
 	
 	this.SpeechChar=true;
@@ -31,7 +40,7 @@ Config.prototype.setLang = function setLang(lang){
 	var self=this;
 	
 	self.current_lang=lang;
-	meSpeak.loadVoice(self.mespeach_dir+"voices/"+lang+".json");
+	meSpeak.loadVoice(self.mespeak_dir+"voices/"+lang+".json");
 	
 	// Set GUI selector
 	$("div#langSelector select").val(lang);
@@ -42,7 +51,13 @@ Config.prototype.savePreferences = function savePreferences(){
 	
 	var self=this;
 	
-	initial_config='{"lang": "'+self.current_lang+'"}';
+	initial_config='{'+
+					'"lang": "'+self.current_lang+'", '+
+					'"amplitude": '+self.amplitude+' , '+
+					'"pitch": '+self.pitch+' , '+
+					'"speed": '+self.speed+' , '+
+					'"word_gap": '+self.word_gap+'}';
+	
 	fs.writeFileSync(self.user_dir+'/.casimir-editor/lang.conf', initial_config);
 }
 
@@ -59,8 +74,20 @@ Config.prototype.checkUserSettings = function checkUserSettings(){
 			conf=JSON.parse(conf_text);
 			self.setLang(conf["lang"]);
 			
+			self.amplitude=conf["amplitude"];
+			self.pitch=conf["pitch"];
+			self.speed=conf["speed"];
+			self.word_gap=conf["word_gap"];
+			
+			self.speakoptions={amplitude: conf["amplitude"],
+								pitch: conf["pitch"],
+								speed: conf["speed"],
+								wordgap: conf["word_gap"],
+								variant: "f2"};
+			console.log(self.speakoptions);
+			
 		  } catch (err){
-			//alert(err);
+			alert(err);
 			self.setLang("es");
 		  }
 	  } else {

@@ -17,6 +17,6 @@ Description: Text editor for dyslexics
 
 Package: casimir-naturalreaders-launcher
 Architecture: any
-Depends: ${misc:Depends}, google-chrome-stable
+Depends: ${misc:Depends}, nwjs0.12
 Description: Natural Readers
  Natural Readers Link for Google Chrome

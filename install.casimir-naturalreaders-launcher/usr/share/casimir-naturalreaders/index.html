@@ -1,0 +1,37 @@
+<html>
+    <head><meta charset="UTF-8"></head>
+    <script>
+        
+        var request;
+        request = new XMLHttpRequest();
+
+        request.open('GET', 'http://www.naturalreaders.com/onlinetts.php', false);
+        request.send(); // there will be a 'pause' here until the response to come.
+        // the object request will be actually modified
+        if (request.status === 200) {
+            window.location="http://www.naturalreaders.com/onlinetts.php";
+        }
+        
+    </script>
+    
+<body style="background:#eeeeee; color: #aaaaaa; font-family: 'ubuntu';">
+    <img style="display: block; margin-left: auto; margin-right: auto;  margin-top: 200px;" src="disconnected.png"></img>
+    <div style="font-size: 1.3em; text-align: center; margin-top: 50px;">
+        <script>
+            if (navigator.language==="ca") {
+                document.write("El Casimir Naturalreaders es un llançador per al recurs en línia NaturalReaders.<br/> \
+                El lloc www.naturalreaders.com no és accessible. Comproveu la connexió a Internet.<br>");
+            } else if (navigator.language==="es") {
+                document.write("Casimir Naturalreaders es un lanzador para recursos el online NaturalReaders.<br/> \
+                El sitio web www.naturalreaders.com es inaccesible. Compruebe su coneión a Internet.<br>");
+            }
+            else{
+                document.write("Casimir Naturalreaders is a launcher for the online NaturalReaders version.<br/> \
+                The site www.naturalreaders.com is unreacheable. Check your Internet Connextion.<br>");      
+            }
+    
+    
+    </script>
+    </div>
+</body>
+</html>

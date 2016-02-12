@@ -1,0 +1,22 @@
+{
+  "main": "index.html",
+  "name": "CasimirNaturalReaders",
+  "description": "Application",
+  "version": "0.1.0",
+  "keywords": [
+    "application"
+  ],
+  "window": {
+    "title": "Natural Readers",
+    "icon": "/usr/share/pixmaps/casimir-editor.png",
+    "toolbar": false,
+    "frame": true,
+    "width": 1100,
+    "height": 800,
+    "position": "mouse"
+  },
+  "webkit": {
+    "plugin": true
+  },
+  "chromium-args": "--ignore-certificate-errors"
+}

@@ -1,0 +1,38 @@
+{
+  "messages" : {
+    "" : {
+      "domain" : "casimir-editor",
+      "lang"   : "ca",
+      "plural_forms" : "nplurals=2; plural=(n != 1);"
+    },
+    "Language" : [ "Idioma"],
+    "English" : [ "Anglès"],
+    "Castilian" : [ "Castellà"],
+    "Valencian" : [ "Valencià"],
+    "Amplitude" : [ "Amplitud (Volum)"],
+    "Pitch" : [ "Tò"],
+    "Speed" : [ "Velocitat"],
+    "Word Gap" : [ "Pausa entre paraules"],
+    "Variant" : [ "Variant"],
+    "Female 1" : [ "Femenina 1"],
+    "Female 2" : [ "Femenina 2"],
+    "Female 3" : [ "Femenina 3"],
+    "Female 4" : [ "Femenina 4"],
+    "Female 5" : [ "Femenina 5"],
+    "Male 1" : [ "Masculina 1"],
+    "Male 2" : [ "Masculina 2"],
+    "Male 3" : [ "Masculina 3"],
+    "Male 4" : [ "Masculina 4"],
+    "Male 5" : [ "Masculina 5"],
+    "Male 6" : [ "Masculina 6"],
+    "Male 7" : [ "Masculina 7"],
+    "Klatt" : [ "Veu Klatt"],
+    "Klatt 2" : [ "Veu Klatt 2"],
+    "Klatt 3" : [ "Veu Klatt 3"],
+    "Whisper" : [ "Xiuxiueig"],
+    "Whisper Female" : [ "Xiuxiueig Femení"],
+    "Save":["Guarda"]
+    
+    
+  }
+}

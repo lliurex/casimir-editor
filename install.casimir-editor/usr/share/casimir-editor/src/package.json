@@ -9,7 +9,7 @@
   "window": {
     "title": "Editor Casimir",
     "icon": "/usr/share/pixmaps/casimir-editor.png",
-    "toolbar": true,
+    "toolbar": false,
     "frame": true,
     "width": 1024,
     "height": 768,

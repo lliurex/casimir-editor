@@ -6,4 +6,4 @@ Type=Application
 Categories=Office;Education;Network;WebBrowser;
 Exec=/usr/share/bin/casimir-naturalreaders-launcher
 Name=Natural Readers Launcher
-Comment=Google Chrome Natural Readers Launcher
+Comment=Natural Readers Launcher

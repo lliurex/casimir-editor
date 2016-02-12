@@ -19,4 +19,4 @@ Package: casimir-naturalreaders-launcher
 Architecture: any
 Depends: ${misc:Depends}, nwjs0.12
 Description: Natural Readers
- Natural Readers Link for Google Chrome
+ Natural Readers Launcher

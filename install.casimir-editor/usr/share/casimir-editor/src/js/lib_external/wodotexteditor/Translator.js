@@ -24,6 +24,7 @@
 
 /*global define, runtime, XMLHttpRequest */
 
+
 define("webodf/editor/Translator", [], function () {
     "use strict";
 
@@ -38,6 +39,8 @@ define("webodf/editor/Translator", [], function () {
             // TODO: Add smarter locale resolution at some point
             if (newLocale.split('-')[0] === "de" || newLocale.split('_')[0] === "de") {
                 newLocale = "de-DE";
+            } else if (newLocale.split('-')[0] === "ca" || newLocale.split('_')[0] === "ca") {
+                newLocale = "ca-ES";
             } else if (newLocale.split('-')[0] === "nl" || newLocale.split('_')[0] === "nl") {
                 newLocale = "nl-NL";
             } else if (newLocale.split('-')[0] === "fr" || newLocale.split('_')[0] === "fr") {
@@ -51,18 +54,21 @@ define("webodf/editor/Translator", [], function () {
             } else {
                 newLocale = "en-US";
             }
-
+            
             var xhr = new XMLHttpRequest(),
                 path = translationsPath + '/' + newLocale + ".json";
             xhr.open("GET", path);
             xhr.onload = function () {
-                if (xhr.status === 200) {// HTTP OK
+                if (xhr.status === 200 || xhr.status === 0) {// HTTP OK
+                //if (xhr.status === 200 ) {// HTTP OK
                     dictionary = JSON.parse(xhr.response);
                     locale = newLocale;
                 }
                 cb();
             };
             xhr.send(null);
+            
+            cb();
         }
         function getLocale() {
             return locale;
@@ -79,3 +85,4 @@ define("webodf/editor/Translator", [], function () {
         init();
     };
 });
+

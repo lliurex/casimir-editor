@@ -188,6 +188,8 @@ window.Wodo = window.Wodo || (function () {
 
                 // TODO: locale cannot be set by the user, also different for different editors
                 t = new Translator(translationsDir, locale, function (editorTranslator) {
+                    //alert(translationsDir);
+                    //alert(locale);
                     runtime.setTranslator(editorTranslator.translate);
                     // Extend runtime with a convenient translation function
                     runtime.translateContent = function (node) {

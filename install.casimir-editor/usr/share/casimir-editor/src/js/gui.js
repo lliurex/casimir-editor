@@ -81,6 +81,17 @@ $("#languageSelector").change(function(){
 		
 		});
 
+$("#variantSelector").change(function(){
+		$( "select#variantSelector option:selected" ).each(function() {
+		 selected = $( this ).val();
+		 //alert(selected);
+		 MyConfig.variant=selected;
+		 MyConfig.speakoptions.variant=(selected);
+		 //MyConfig.setLang(selected);
+		 })
+		
+		});
+		
 $("#savePreferences").bind("click", function(){
 	
 	MyConfig.amplitude=Math.round($("#vol_slider_value").val());
@@ -103,9 +114,12 @@ $("#savePreferences").bind("click", function(){
 
 
 GUI.prototype.drawMenuElements = function drawMenuElements(Conf) {
-// Menu Options
-
-
+	// Menu Options	// Setting variant
+	$("div#variantSelector select").val(Conf.variant);
+	
+	//console.log("22222222222 > drawElements");
+	//console.log(Conf);
+	
 	var vol_slider = document.getElementById('vol_slider');	
 	noUiSlider.create(vol_slider, {
 		start: Conf.amplitude,
@@ -114,11 +128,10 @@ GUI.prototype.drawMenuElements = function drawMenuElements(Conf) {
 		range: { 'min': 0, 'max': 200 }
 	});
 	vol_slider.noUiSlider.on('update', function( values, handle ) {
-		$("#vol_slider_value").val(values[handle]); 	});
+		$("#vol_slider_value").val(values[handle]);
+		Conf.speakoptions.amplitude=(values[handle]);
+	});
 
-	
-	
-	
 	
 	var pitch_slider = document.getElementById('pitch_slider');	
 	noUiSlider.create(pitch_slider, {
@@ -128,7 +141,9 @@ GUI.prototype.drawMenuElements = function drawMenuElements(Conf) {
 		range: { 'min': 0, 'max': 100 }
 	});
 	pitch_slider.noUiSlider.on('update', function( values, handle ) {
-		$("#pitch_slider_value").val(values[handle]); 	});
+		$("#pitch_slider_value").val(values[handle]);
+		Conf.speakoptions.pitch=(values[handle]);
+		});
 	
 	
 	var speed_slider = document.getElementById('speed_slider');
@@ -139,7 +154,9 @@ GUI.prototype.drawMenuElements = function drawMenuElements(Conf) {
 		range: { 'min': 0, 'max': 350 }
 	});
 	speed_slider.noUiSlider.on('update', function( values, handle ) {
-		$("#speed_slider_value").val(values[handle]); 	});
+		$("#speed_slider_value").val(values[handle]);
+		Conf.speakoptions.speed=(values[handle]);
+		});
 	
 	var wordgap_slider = document.getElementById('wordgap_slider');	
 	noUiSlider.create(wordgap_slider, {
@@ -149,7 +166,9 @@ GUI.prototype.drawMenuElements = function drawMenuElements(Conf) {
 		range: { 'min': 0, 'max': 10 }
 	});
 	wordgap_slider.noUiSlider.on('update', function( values, handle ) {
-		$("#wordgap_slider_value").val(values[handle]); 	});
+		$("#wordgap_slider_value").val(values[handle]);
+		Conf.speakoptions.wordgap=(values[handle]);
+		});
 	
 }
 

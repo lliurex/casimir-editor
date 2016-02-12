@@ -451,7 +451,9 @@ Ceditor.prototype.loadDoc=function loadDoc(filename){
 			} 
 		else if (self.MyConfig.SpeechChar) {
 				if (event.which>64 && event.which<91) {
-					meSpeak.speak(String.fromCharCode(event.which), self.MyConfig.speakoptions);
+					// Smakk hacking for Z!
+					if (event.which===90) meSpeak.speak("z", self.MyConfig.speakoptions);
+					else meSpeak.speak(String.fromCharCode(event.which), self.MyConfig.speakoptions);
 				}
 			}
 				

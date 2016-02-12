@@ -7,24 +7,15 @@ function Config(){
 	this.user_dir=process.env['HOME'];
 	this.current_doc=null;
 	
-	
-	
-	// Setting Voices
-	meSpeak.loadConfig(this.mespeak_dir+"mespeak_config.json");
-	
+	// Default settings
 	this.current_lang="es"; // es by default
 	// espeak default config
 	this.amplitude=100;
 	this.pitch=50;
 	this.speed=175;
 	this.word_gap=0;
-		
-	this.speakoptions={amplitude: this.amplitude, pitch: this.pitch, speed: this.speed, wordgap: this.word_gap, variant: "f2"};
-	this.checkUserSettings();
-	
-	// MIRAR XQ AÇÒ NO HO ACABA DE PILLAR...
-	
-	//this.setLang("es"); ->  moved into checkUserSettings
+	this.variant="f2";
+	this.speakoptions=null;
 	
 	this.SpeechChar=true;
 	this.SpeechWord=true;
@@ -32,7 +23,18 @@ function Config(){
 	
 	// Temporal paths
 	this.templatePath='/usr/share/casimir-editor/templates/tmpodf';
-	this.tempDocPath='/tmp/tmpodf';
+	this.tempDocPath='/tmp/tmpodf';	
+}
+
+Config.prototype.Init=function Init(){
+	var self=this;
+	
+	// Setting Voices
+	meSpeak.loadConfig(self.mespeak_dir+"mespeak_config.json");
+	
+	self.checkUserSettings();
+	self.speakoptions={amplitude: self.amplitude, pitch: self.pitch, speed: self.speed, wordgap: self.word_gap, variant: self.variant};
+	
 }
 
 
@@ -47,7 +49,7 @@ Config.prototype.setLang = function setLang(lang){
 }
 
 Config.prototype.savePreferences = function savePreferences(){
-	// Saves selected language to json config file
+	// Saves selected preferences to json config file
 	
 	var self=this;
 	
@@ -56,7 +58,8 @@ Config.prototype.savePreferences = function savePreferences(){
 					'"amplitude": '+self.amplitude+' , '+
 					'"pitch": '+self.pitch+' , '+
 					'"speed": '+self.speed+' , '+
-					'"word_gap": '+self.word_gap+'}';
+					'"word_gap": '+self.word_gap+' , '+
+					'"variant": "'+self.variant+'"}';
 	
 	fs.writeFileSync(self.user_dir+'/.casimir-editor/lang.conf', initial_config);
 }
@@ -64,11 +67,12 @@ Config.prototype.savePreferences = function savePreferences(){
 
 Config.prototype.checkUserSettings = function checkUserSettings(){
 		// Check if config dir exists
-		var self=this;
-	fs.exists(self.user_dir+'/.casimir-editor', function (exists) {
-	  if (exists) {
+	var self=this;
+	//fs.exists(self.user_dir+'/.casimir-editor', function (exists) {
+	try{
+		if (fs.statSync(self.user_dir+'/.casimir-editor').isDirectory()) {
 		  // Reading user language
-		  try{
+		  
 			conf_text=fs.readFileSync(self.user_dir+'/.casimir-editor/lang.conf');
 			//alert(conf_text);
 			conf=JSON.parse(conf_text);
@@ -78,26 +82,32 @@ Config.prototype.checkUserSettings = function checkUserSettings(){
 			self.pitch=conf["pitch"];
 			self.speed=conf["speed"];
 			self.word_gap=conf["word_gap"];
+			self.variant=conf["variant"];
 			
 			self.speakoptions={amplitude: conf["amplitude"],
 								pitch: conf["pitch"],
 								speed: conf["speed"],
 								wordgap: conf["word_gap"],
-								variant: "f2"};
-			console.log(self.speakoptions);
-			
-		  } catch (err){
-			alert(err);
-			self.setLang("es");
-		  }
+								variant: conf["variant"]};
+								
+			//console.log(self.speakoptions);
 	  } else {
 			fs.mkdirSync(self.user_dir+'/.casimir-editor');
 			initial_config='{"lang":"es"}';
 			fs.writeFileSync(self.user_dir+'/.casimir-editor/lang.conf', initial_config);
 			self.setLang("es");
 			};
-	});
-}
+		} catch (err){
+			console.log(err);
+			fs.mkdirSync(self.user_dir+'/.casimir-editor');
+			initial_config='{"lang":"es"}';
+			fs.writeFileSync(self.user_dir+'/.casimir-editor/lang.conf', initial_config);
+			self.setLang("es");
+		}
+		  
+			
+	}
+
 
 //Config.prototype.func = function func() {}
 	

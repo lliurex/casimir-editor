@@ -20,6 +20,8 @@
 		
 		<!-- Node Modules -->
 		<script type="text/javascript" src="node_modules/jed/jed.js"></script>
+		<!-- i18n -->
+		<script type="text/javascript" src="js/lib/util/i18n.js"></script>
 		<!--script type="text/javascript" src="node_modules/adm-zip/zipFile.js"></script>
 		<script type="text/javascript" src="node_modules/adm-zip/zipEntry.js"></script-->
 		<!--script type="text/javascript" src="./node_modules/adm-zip/adm-zip.js"></script-->
@@ -66,41 +68,67 @@
 <div id="panelMenu">
 	<div id="closeMenu">></div>
 	<div id="LangContainer" class="OptionsContent">
-		<div id="langLabel" class="textmenu">Language</div>
+		<div id="langLabel" class="textmenu" i18n>Language</div>
 		<div id="langSelector">
 			<select class="form-control" id="languageSelector">
-				<option value="ca">Valencià</option>
-				<option value="es">Castellà</option>
-				<option value="en/en">Anglès</option>
+				<option value="ca" i18n>Valencian</option>
+				<option value="es" i18n>Castilian</option>
+				<option value="en/en" i18n>English</option>
 			</select>
 		</div> <!-- langselector -->
 	</div>	 <!-- langContainer-->
 	
 	<div class="OptionsContent">
-		<div id="amplitude" class="textmenu">Amplitude</div>	
+		<div id="amplitude" class="textmenu" i18n>Amplitude</div>	
 		<div id="vol_slider"></div>
 		<input type="text" id="vol_slider_value" style="display: none"></input>
 	</div>
 	
 	<div class="OptionsContent">
-		<div id="pitch" class="textmenu">Pitch</div>	
+		<div id="pitch" class="textmenu" i18n>Pitch</div>	
 		<div id="pitch_slider"></div>
 		<input type="text" id="pitch_slider_value" style="display: none"></input>
 	</div>
 	
 	<div class="OptionsContent">
-		<div id="speed" class="textmenu">Speed</div>	
+		<div id="speed" class="textmenu" i18n>Speed</div>	
 		<div id="speed_slider"></div>
 		<input type="text" id="speed_slider_value" style="display: none"></input>
 	</div>
 	
 	<div class="OptionsContent">
-		<div id="wordgap" class="textmenu">Word Gap</div>	
+		<div id="wordgap" class="textmenu" i18n>Word Gap</div>	
 		<div id="wordgap_slider"></div>
 		<input type="text" id="wordgap_slider_value" style="display: none"></input>
 	</div>
 	
-	<button type="button" class="btn btn-default" id="savePreferences"><div class="tick"></div>Save</button>
+	<div id="VariantContainer" class="OptionsContent">
+		<div id="variantLabel" class="textmenu" i18n>Variant</div>
+		<div id="variantSelector">
+			<select class="form-control" id="variantSelector">
+				<option value="f1" i18n>Female 1</option>
+				<option value="f2" i18n>Female 2</option>
+				<option value="f3" i18n>Female 3</option>
+				<option value="f4" i18n>Female 4</option>
+				<option value="f5" i18n>Female 5</option>
+				<option value="m1" i18n>Male 1</option>
+				<option value="m2" i18n>Male 2</option>
+				<option value="m3" i18n>Male 3</option>
+				<option value="m4" i18n>Male 4</option>
+				<option value="m5" i18n>Male 5</option>
+				<option value="m6 "i18n>Male 6</option>
+				<option value="m7" i18n>Male 7</option>
+				<option value="croak" i18n>croak</option>
+				<option value="klatt" i18n>Klatt</option>
+				<option value="klatt2" i18n>Klatt 2</option>
+				<option value="klatt3" i18n>Klatt 3</option>
+				<option value="whisper" i18n>Whisper</option>
+				<option value="whisperf" i18n>Whisper Female</option>
+			</select>
+		</div> <!-- langselector -->
+	</div>	 <!-- langContainer-->
+	
+	<button type="button" class="btn btn-default" id="savePreferences"><div class="tick"></div i18n>Save</button>
 	
 	
 	

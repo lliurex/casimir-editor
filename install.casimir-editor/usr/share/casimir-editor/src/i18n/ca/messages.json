@@ -6,11 +6,11 @@
       "plural_forms" : "nplurals=2; plural=(n != 1);"
     },
     "Language" : [ "Idioma"],
-    "English" : [ "Anglès"],
+    "English" : [ "Anglés"],
     "Castilian" : [ "Castellà"],
     "Valencian" : [ "Valencià"],
-    "Amplitude" : [ "Amplitud (Volum)"],
-    "Pitch" : [ "Tò"],
+    "Amplitude" : [ "Amplitud (volum)"],
+    "Pitch" : [ "To"],
     "Speed" : [ "Velocitat"],
     "Word Gap" : [ "Pausa entre paraules"],
     "Variant" : [ "Variant"],
@@ -30,7 +30,7 @@
     "Klatt 2" : [ "Veu Klatt 2"],
     "Klatt 3" : [ "Veu Klatt 3"],
     "Whisper" : [ "Xiuxiueig"],
-    "Whisper Female" : [ "Xiuxiueig Femení"],
+    "Whisper Female" : [ "Xiuxiueig femení"],
     "Save":["Guarda"]
     
     

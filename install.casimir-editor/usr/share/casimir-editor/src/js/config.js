@@ -106,7 +106,7 @@ Config.prototype.checkUserSettings = function checkUserSettings(){
 		}
 		  
 			
-	}
+	};
 
 
 //Config.prototype.func = function func() {}

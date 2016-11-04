@@ -40,7 +40,7 @@ $(document).ready(function() {
 	
 	mygui.drawMenuElements(MyConfig);
 	mygui.bindGUIEvents(MyConfig, MyEditor);
-	MyEditor.Initialize('editorContainer', MyConfig);
+	MyEditor.Initialize('CasimirEditorContainer', MyConfig);
 	
 	
 	$.material.init();

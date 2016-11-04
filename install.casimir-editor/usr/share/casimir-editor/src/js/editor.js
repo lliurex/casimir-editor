@@ -425,7 +425,7 @@ Ceditor.prototype.onNewFile = function onNewFile(){
 Ceditor.prototype.loadDoc=function loadDoc(filename){
 		var self=this;
 	
-		self.MyConfig.current_doc=filename;
+		self.MyConfig.current_doc="file://"+filename;
 		
 		self.editor.openDocumentFromUrl(self.MyConfig.current_doc, function(err) {
 			if (err) {

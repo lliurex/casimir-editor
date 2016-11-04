@@ -45,7 +45,7 @@ html{
     z-index: 1;
 }
 
-#editorContainer{
+#CasimirEditorContainer{
 	float: left;
 	clear: both;
 	width: 100%;
@@ -179,6 +179,10 @@ html{
 	background: url('img/tick.png');
 }
 
+.noUi-base{
+    height: 2px;
+    background-color:#009688;
+}
 
 /*document {overflow:scroll; max-height:300px}*/
  

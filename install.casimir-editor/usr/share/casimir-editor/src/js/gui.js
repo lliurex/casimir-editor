@@ -122,9 +122,11 @@ GUI.prototype.drawMenuElements = function drawMenuElements(Conf) {
 	
 	var vol_slider = document.getElementById('vol_slider');	
 	noUiSlider.create(vol_slider, {
-		start: Conf.amplitude,
+		//start: Conf.amplitude,
+		start: 100,
 		//tooltips: [ true, wNumb({ decimals: 0 }) ],
-		connect: 'lower',
+		//connect: 'lower',
+		connect: true,
 		range: { 'min': 0, 'max': 200 }
 	});
 	vol_slider.noUiSlider.on('update', function( values, handle ) {
@@ -135,9 +137,11 @@ GUI.prototype.drawMenuElements = function drawMenuElements(Conf) {
 	
 	var pitch_slider = document.getElementById('pitch_slider');	
 	noUiSlider.create(pitch_slider, {
-		start: Conf["pitch"],
+		//start: Conf["pitch"],
+		start: 100,
 		//tooltips: [ true, wNumb({ decimals: 0 }) ],
-		connect: 'lower',
+		//connect: 'lower',
+		connect: true,
 		range: { 'min': 0, 'max': 100 }
 	});
 	pitch_slider.noUiSlider.on('update', function( values, handle ) {
@@ -148,9 +152,10 @@ GUI.prototype.drawMenuElements = function drawMenuElements(Conf) {
 	
 	var speed_slider = document.getElementById('speed_slider');
 	noUiSlider.create(speed_slider, {
-		start: Conf["speed"],
+		//start: Conf["speed"],
+		start: 200,
 		//tooltips: [ true, wNumb({ decimals: 0 }) ],
-		connect: 'lower',
+		connect: true,
 		range: { 'min': 0, 'max': 350 }
 	});
 	speed_slider.noUiSlider.on('update', function( values, handle ) {
@@ -160,9 +165,11 @@ GUI.prototype.drawMenuElements = function drawMenuElements(Conf) {
 	
 	var wordgap_slider = document.getElementById('wordgap_slider');	
 	noUiSlider.create(wordgap_slider, {
-		start: Conf["word_gap"],
+		//start: Conf["word_gap"],
+		start: 5,
 		//tooltips: [ true, wNumb({ decimals: 0 }) ],
-		connect: 'lower',
+		//connect: 'lower',
+		connect: true,
 		range: { 'min': 0, 'max': 10 }
 	});
 	wordgap_slider.noUiSlider.on('update', function( values, handle ) {

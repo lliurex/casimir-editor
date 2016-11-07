@@ -59,6 +59,29 @@
 	<div id="speechWord" class="swapButton btn_on" status="on"></div>
 	<div id="speechPhrase" class="swapButton btn_on" status="on"></div>
 	<div id="speechSelected" class="swapButton btn_on" status="on"></div>
+	<div id="speechSelectedWithGoogle" class="swapButton btn_on" status="on"></div>
+	
+<!--
+	
+Botó de xarrar amb google...
+	
+WIP HERE:
+	
+Fem un .sh amb:
+	
+-------------------
+#!/bin/bash
+say() { local IFS=+;/usr/bin/mplayer -ao alsa -really-quiet -noconsolecontrols "http://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&q=$*&tl=En-us"; }
+say $*
+----------------------
+
+/tmp/speech.sh "Hello mister marshall"
+
+La idea és que el botó esta faça la crida i utilitze el tts de google per a les frases
+
+-->
+	
+	
 </div>
 
 <div id="menuContainer">

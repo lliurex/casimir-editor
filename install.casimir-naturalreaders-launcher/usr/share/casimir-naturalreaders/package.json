@@ -18,5 +18,5 @@
   "webkit": {
     "plugin": true
   },
-  "chromium-args": "--ignore-certificate-errors"
+  "chromium-args": "--allow-file-access-from-files --disable-web-security"
 }

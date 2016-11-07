@@ -57,12 +57,12 @@ html{
 	width: 0px;
 	height: 100%;
 	z-index: 1;
-	//background-color: rgba(139, 195, 74, 0.7);
+	/*background-color: rgba(139, 195, 74, 0.7);*/
     background-color: rgba(255, 255, 255, 0.7);
     color: #000000;
 	display: none;
     padding: 80px 15px 0px 15px;
-    border-left: 3px solid #009688;
+    border-left: 3px solid #FF8800;
 }
 
 #closeMenu{
@@ -87,24 +87,54 @@ html{
 }
 
 #menuBt{
+    background-color: #cc0000 !important;
     background-image: url('img/menu.png');
+    background-size: cover;
+    background-color: #0099cc !important;
 }
+
+#menuBt:hover{
+    background-color: #33b5e5 !important;
+}
+
 
 #speechChar{
+    background-color: #0099cc !important;
     background-image: url('img/character.png');
+    background-size: cover;
 }
 
+#speechChar:hover, #speechWord:hover, #speechPhrase:hover{
+    background-color: #33b5e5 !important;
+    }
+
 #speechWord{
+    background-color: #0099cc !important;
     background-image: url('img/word.png');
+    background-size: cover;
     
 }
 
 #speechPhrase{
+    background-color: #0099cc !important;
     background-image: url('img/phrase.png');
+    background-size: cover;
 }
 
 #speechSelected{
     background-image: url('img/play.png');
+    background-size: cover;
+    background-color: #ff8800 !important;
+}
+
+#speechSelectedWithGoogle{
+    background-image: url('img/play.png');
+    background-size: cover;
+    background-color: #ff8800 !important;
+}
+
+#speechSelected:hover, #speechSelectedWithGoogle:hover{
+    background-color: #ffbb33 !important;
 }
 
 
@@ -122,20 +152,24 @@ html{
 }
 
 .swapButton{
-	width: 64px;
-	height: 64px;
+	width: 48px;
+	height: 48px;
     border-radius: 50%;
 	float: left;
     clear: both;
 	position: relative;
 	display: block;
-	margin: 10px;
+	margin: 10px 10px 10px 15px;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.14), 0px 4px 8px rgba(0, 0, 0, 0.28);
+    transition: all 0.2s;
 } 
 
 .swapButton:hover{
     cursor: pointer;
     background: #ececec;
+    width: 64px;
+	height: 64px;
+    margin: 2px 10px 2px 10px;
     }
 
 .btn_on{
@@ -181,8 +215,15 @@ html{
 
 .noUi-base{
     height: 2px;
-    background-color:#009688;
+    /*background-color:#009688;*/
+    background-color:#FF8800;
 }
+.noUi-handle{
+    background-color:#FF8800 !important;
+    border-color:#FF8800 !important;
+}
+
+.is-focused{background-color:#FF8800 !important;}
 
 /*document {overflow:scroll; max-height:300px}*/
  

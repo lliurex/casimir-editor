@@ -5,12 +5,17 @@
         var request;
         request = new XMLHttpRequest();
 
-        request.open('GET', 'http://www.naturalreaders.com/onlinetts.php', false);
+	request.onreadystatechange = function(){
+        if (request.readyState == 4 && request.status == 200)
+           window.location="http://www.naturalreaders.com/onlinetts.php";
+         }; 
+
+        request.open('GET', 'http://www.naturalreaders.com/onlinetts.php');
         request.send(); // there will be a 'pause' here until the response to come.
         // the object request will be actually modified
-        if (request.status === 200) {
+        /*if (request.status === 200) {
             window.location="http://www.naturalreaders.com/onlinetts.php";
-        }
+        }*/
         
     </script>
     
@@ -19,15 +24,15 @@
     <div style="font-size: 1.3em; text-align: center; margin-top: 50px;">
         <script>
             if (navigator.language==="ca") {
-                document.write("El Casimir Naturalreaders es un llançador per al recurs en línia NaturalReaders.<br/> \
-                El lloc www.naturalreaders.com no és accessible. Comproveu la connexió a Internet.<br>");
+                document.write("El Casimir Naturalreaders es un llançador per al recurs en línia NaturalReaders.<br/> "+
+                "El lloc www.naturalreaders.com no és accessible. Comproveu la connexió a Internet. Status: "+request.status+"<br>");
             } else if (navigator.language==="es") {
-                document.write("Casimir Naturalreaders es un lanzador para recursos el online NaturalReaders.<br/> \
-                El sitio web www.naturalreaders.com es inaccesible. Compruebe su coneión a Internet.<br>");
+                document.write("Casimir Naturalreaders es un lanzador para recursos el online NaturalReaders.<br/> "+
+                "El sitio web www.naturalreaders.com es inaccesible. Compruebe su coneión a Internet. Status: "+request.status+"<br>");
             }
             else{
-                document.write("Casimir Naturalreaders is a launcher for the online NaturalReaders version.<br/> \
-                The site www.naturalreaders.com is unreacheable. Check your Internet Connextion.<br>");      
+                document.write("Casimir Naturalreaders is a launcher for the online NaturalReaders version.<br/> "+
+                "The site www.naturalreaders.com is unreacheable. Check your Internet Connection. Status: "+request.status+"<br>");
             }
     
     

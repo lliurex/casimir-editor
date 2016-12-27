@@ -38,6 +38,10 @@ $("#speechSelected").bind("click", function(event){
 		MyEditor.speechSelected();
 	});
 
+$("#speechSelectedWithGoogle").bind("click", function(event){
+		MyEditor.speechSelected(true);
+	});
+
 $("#speechPhrase").bind("click", function(event){
 		button=event.currentTarget;
 		if ($(button).attr("status")=="on"){

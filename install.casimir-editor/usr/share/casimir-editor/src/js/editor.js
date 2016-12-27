@@ -528,7 +528,7 @@ Ceditor.prototype.getCurrentWord =function getCurrentWord() {
 	return word;		
 }
 
-Ceditor.prototype.speechSelected =function speechSelected() {
+Ceditor.prototype.speechSelected =function speechSelected(useGoogle=false) {
 	var self=this;
 	
 	//p=self.getCurrentParagraph();
@@ -536,6 +536,9 @@ Ceditor.prototype.speechSelected =function speechSelected() {
 	
 	if (position===undefined) text=($("cursor")[0].nextSibling.nodeValue);
 	 else text=($("anchor")[0].nextSibling.nodeValue);
+	 
+	 console.log(text);
+	 console.log(text.length);
 	
 	// Clean text before
 	
@@ -549,17 +552,31 @@ Ceditor.prototype.speechSelected =function speechSelected() {
         }
 	}
 	console.log(text);			
-	console.log(speechtext);			
+	console.log(self.MyConfig.current_lang);
 	
-	meSpeak.speak(speechtext, self.MyConfig.speakoptions);
+	
+	if (useGoogle) self.googleSay(speechtext, self.MyConfig.speakoptions);
+	else meSpeak.speak(speechtext, self.MyConfig.speakoptions);
 		
 	//console.log($("anchor")[0].nextSibling.nodeValue);
 	 //memberId="localuser"
+};
+
+
+Ceditor.prototype.googleSay=function googleSay(text, lang) {
+	text="Hola";
+	//var url="https://translate.google.es/translate_tts?ie=UTF-8&q="+text+"&tl=&total=1&idx=0&textlen="+text.length+"&tk=631050.1042929&client=t";
+	var url="https://translate.google.es/translate_tts?ie=UTF-8&q=se%C3%B1or%20Cara%20de%20Papa&tl=es&total=1&idx=0&textlen=18&tk=131710.281221&client=t";
+	$.get( url, function( data ) {
+		// WIP
+		// Cal vore com posar les dades en el component de audio, i que este se reproduisca
+		// I també com obtindre el token...
+		//$( ".result" ).html( data );
+		alert( "done" );
+		});
+	
+	// WIP: Cal saber com obtindre el tk...
 }
-
-
-
-
 
 Ceditor.prototype.getCurrentPhrase=function getCurrentPhrase() {
 	var self=this;

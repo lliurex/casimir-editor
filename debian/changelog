@@ -1,0 +1,59 @@
+casimir-editor (1.2) xenial; urgency=medium
+
+  * Removed deprecated locale
+
+ -- Juanma Navarro Mañez <juanma1980@gmail.com>  Thu, 22 Jun 2017 09:14:13 +0200
+
+casimir-editor (1.1) xenial; urgency=high
+
+  * Added LliureX TTS (Google TTS + festival)
+
+ -- Jose A. Murcia <joamuran@gmail.com>  Tue, 06 Jun 2017 10:16:38 +0200
+
+casimir-editor (1.0.1-lliurex3) xenial; urgency=medium
+
+  * Fixed typo in metainfo
+
+ -- Juanma Navarro Mañez <juanma1980@gmail.com>  Mon, 05 Jun 2017 08:35:52 +0200
+
+casimir-editor (1.0.1-lliurex2) xenial; urgency=medium
+
+  * Fixed rules files
+
+ -- Juanma Navarro Mañez <juanma1980@gmail.com>  Fri, 02 Jun 2017 14:19:55 +0200
+
+casimir-editor (1.0.1-lliurex1) xenial; urgency=medium
+
+  * Added metainfo
+
+ -- Juanma Navarro Mañez <juanma1980@gmail.com>  Fri, 02 Jun 2017 12:44:47 +0200
+
+casimir-editor (1.0.1) trusty; urgency=high
+
+  * fixed translations
+
+ -- joamuran <joamuran@gmail.com>  Mon, 15 Feb 2016 09:24:41 +0100
+
+casimir-editor (1.0) trusty; urgency=high
+
+  * New version with new features
+
+ -- joamuran <joamuran@gmail.com>  Fri, 12 Feb 2016 13:14:29 +0100
+
+casimir-editor (0.3) trusty; urgency=high
+
+  * Fixed dependencies
+
+ -- joamuran <joamuran@gmail.com>  Fri, 05 Feb 2016 09:24:57 +0100
+
+casimir-editor (0.2) trusty; urgency=high
+
+  * Almost all functionality done
+
+ -- José A. Murcia <joamuran@gmail.com>  Thu, 26 Mar 2015 09:16:33 +0100
+
+casimir-editor (0.1) trusty; urgency=low
+
+  * Initial Release.
+
+ -- José A. Múrcia <joamuran@gmail.com>  Sun, 15 Mar 2015 09:17:00 +0100

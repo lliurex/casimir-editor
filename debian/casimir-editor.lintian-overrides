@@ -1,0 +1,6 @@
+casimir-editor: embedded-javascript-library
+casimir-editor: extra-license-file 
+casimir-editor: binary-without-manpage
+casimir-editor: script-not-executable 
+casimir-editor: unusual-interpreter
+casimir-editor: executable-not-elf-or-script

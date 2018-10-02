@@ -1,10 +1,9 @@
 var fs = require('fs');
 var fsxtrta = require('./node_modules/fs.extra');
 var process=require('process');
-var sys = require('sys')
+var sys = require('sys');
 var archiver = require('archiver');
-
-exec = require('child_process').exec;
+var exec = require('child_process').exec;
 
 function Ceditor(){
 	// Creates a wodo editor linked to editoritem
@@ -44,7 +43,7 @@ Ceditor.prototype.Initialize = function Initialize (editoritem, MyConfig){
 			fullName: "",
 			color:    ""
 		}
-	}
+	};
 	//Wodo.createTextEditor(editoritem, self.editorOptions, self.onEditorCreated);
 	
 	Wodo.createTextEditor(editoritem, self.editorOptions, function(err, editor){
@@ -555,15 +554,35 @@ Ceditor.prototype.speechSelected =function speechSelected(useGoogle=false) {
 	console.log(self.MyConfig.current_lang);
 	
 	
-	if (useGoogle) self.googleSay(speechtext, self.MyConfig.speakoptions);
-	else meSpeak.speak(speechtext, self.MyConfig.speakoptions);
+	/*if (useGoogle) self.googleSay(speechtext, self.MyConfig.speakoptions);
+	else meSpeak.speak(speechtext, self.MyConfig.speakoptions);*/
+	self.readLliureXTTS(speechtext, self.MyConfig.current_lang, self.MyConfig.speakoptions);
+		
+		
 		
 	//console.log($("anchor")[0].nextSibling.nodeValue);
 	 //memberId="localuser"
 };
 
 
-Ceditor.prototype.googleSay=function googleSay(text, lang) {
+Ceditor.prototype.readLliureXTTS =function readLliureXTTS(text, lang, config){
+	console.log(text);
+	console.log(lang);
+	console.log(config);
+	
+	if (lang=="en/en") lang="en";
+	
+	exec("simple-google-tts "+lang+" '"+text+"'", function(error, stdout, stderr){
+			console.log(error);
+			console.log(stdout);
+		console.log(stderr);
+		});
+	console.log("end");
+}
+
+
+/*Ceditor.prototype.googleSay=function googleSay(text, lang) {
+ *DEPRECATED: Replaced with lliurex-tts
 	text="Hola";
 	//var url="https://translate.google.es/translate_tts?ie=UTF-8&q="+text+"&tl=&total=1&idx=0&textlen="+text.length+"&tk=631050.1042929&client=t";
 	var url="https://translate.google.es/translate_tts?ie=UTF-8&q=se%C3%B1or%20Cara%20de%20Papa&tl=es&total=1&idx=0&textlen=18&tk=131710.281221&client=t";
@@ -576,7 +595,7 @@ Ceditor.prototype.googleSay=function googleSay(text, lang) {
 		});
 	
 	// WIP: Cal saber com obtindre el tk...
-}
+}*/
 
 Ceditor.prototype.getCurrentPhrase=function getCurrentPhrase() {
 	var self=this;

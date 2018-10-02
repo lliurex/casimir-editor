@@ -90,7 +90,7 @@ html{
     background-color: #cc0000 !important;
     background-image: url('img/menu.png');
     background-size: cover;
-    background-color: #0099cc !important;
+    background-color: #0091ea !important;
 }
 
 #menuBt:hover{
@@ -99,24 +99,25 @@ html{
 
 
 #speechChar{
-    background-color: #0099cc !important;
+    background-color: #0091ea !important;
     background-image: url('img/character.png');
     background-size: cover;
 }
+#speechChar.btn_off, #speechWord.btn_off, #speechPhrase.btn_off{ background-color: #81d4fa !important; };
 
 #speechChar:hover, #speechWord:hover, #speechPhrase:hover{
-    background-color: #33b5e5 !important;
+    background-color: #e1f5fe !important;
     }
 
 #speechWord{
-    background-color: #0099cc !important;
+    background-color: #0091ea !important;
     background-image: url('img/word.png');
     background-size: cover;
     
 }
 
 #speechPhrase{
-    background-color: #0099cc !important;
+    background-color: #0091ea !important;
     background-image: url('img/phrase.png');
     background-size: cover;
 }

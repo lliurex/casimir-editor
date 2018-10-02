@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
 Terminal=false
-Icon=/usr/share/pixmaps/casimir-editor.png
+Icon=casimir-editor
 Type=Application
 Categories=Office;Education;Network;WebBrowser;
 Exec=/usr/share/bin/casimir-naturalreaders-launcher

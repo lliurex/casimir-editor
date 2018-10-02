@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<component type="desktop-application">
+<id>casimir-editor</id>
+<metadata_license>CC0-1.0</metadata_license>
+<name>Casimir Editor</name>
+<summary>Text editor for dyslexic people</summary>
+<summary xml:lang="es">Herramienta de aprendizaje multisensorial para niños y niñas con dislexia</summary>
+<summary xml:lang="ca_ES.UTF-8@valencia">Eina d'aprenentatge multisensorial per a xiquets i xiquetes amb dislèxia</summary>
+<summary xml:lang="ca_ES">Eina d'aprenentatge multisensorial per a xiquets i xiquetes amb dislèxia</summary>
+<summary xml:lang="ca_ES@valencia">Eina d'aprenentatge multisensorial per a xiquets i xiquetes amb dislèxia</summary>
+<description>
+<p>The Casimir Editor is a text editor conceived as a multi-sensory learning tool for children with dyslexia. The editor is based on the incorporation of a synthetic voice that repeats the letters, words and phrases as they are being scribed, applying multisensory learning. On the other hand, the Casimir Editor comes with a launcher to the portal Natural Reader, online tool that facilitates the reading of texts in different formats using synthetic speech. Both applications, together, enhance multi-sensory learning and help overcome the obstacle caused by dyslexia; The first, with regard to writing habits, and the second as regards the habit of writing.</p>
+<p xml:lang="es">El Casimir Editor es un editor de texto concebido como una herramienta de aprendizaje multisensorial para niños y niñas con dislexia. El editor se basa en la incorporación de una voz sintética que repetite las letras, palabras y frases a medida que se va escriniendo, aplicando así el aprendizaje multisensorial. Por otra parte, el Casimir Editor viene acompañado de un lanzador al portal Natural Reader, herramienta en línia que facilita la lectura de textos en diferentes formatos mediante voz sintética. Ambas aplicaciones, en conjunto, potencian el aprendizaje multisensorial y ayudan a superar loel obstáculo causado por la dislexia; el primero, por lo que respecta a los hábitos de escritura, y el segundo por lo que respeta al hábito de escritura.</p>
+<p xml:lang="ca_ES@valencia">L'editor Casimir és un editor de text concebut com a eina d'aprenentatge multisensorial per a xiquets i xiquetes amb dislèxia. L'editor es basa en la incorporació d'una veu sintètica que repeteix les lletres, paraules i frases a mesura que s'escriuen, aplicant així l'aprenentatge multisensorial. Per altra banda, l'editor Casimir ve acompanyat d'un accés directe al portal Natural Reader, una eina en línia que facilita la lectura de textos en diferents formats mitjançant veu sintètica. Ambdós aplicacions, en conjunt, potencien l'aprenentatge multisensorial i ajuden a superar l'obstacle causat per la dislèxia; la primera pel que fa a l'habilitat d'escriptura, i la segona pel que fa a l'habilitat de lectura</p>
+<p xml:lang="ca_ES.UTF-8@valencia">L'editor Casimir és un editor de text concebut com a eina d'aprenentatge multisensorial per a xiquets i xiquetes amb dislèxia. L'editor es basa en la incorporació d'una veu sintètica que repeteix les lletres, paraules i frases a mesura que s'escriuen, aplicant així l'aprenentatge multisensorial. Per altra banda, l'editor Casimir ve acompanyat d'un accés directe al portal Natural Reader, una eina en línia que facilita la lectura de textos en diferents formats mitjançant veu sintètica. Ambdós aplicacions, en conjunt, potencien l'aprenentatge multisensorial i ajuden a superar l'obstacle causat per la dislèxia; la primera pel que fa a l'habilitat d'escriptura, i la segona pel que fa a l'habilitat de lectura</p>
+<p xml:lang="ca">L'editor Casimir és un editor de text concebut com a eina d'aprenentatge multisensorial per a xiquets i xiquetes amb dislèxia. L'editor es basa en la incorporació d'una veu sintètica que repeteix les lletres, paraules i frases a mesura que s'escriuen, aplicant així l'aprenentatge multisensorial. Per altra banda, l'editor Casimir ve acompanyat d'un accés directe al portal Natural Reader, una eina en línia que facilita la lectura de textos en diferents formats mitjançant veu sintètica. Ambdós aplicacions, en conjunt, potencien l'aprenentatge multisensorial i ajuden a superar l'obstacle causat per la dislèxia; la primera pel que fa a l'habilitat d'escriptura, i la segona pel que fa a l'habilitat de lectura</p>
+</description>
+<categories>
+<category>Office</category>
+<category>Education</category>
+</categories>
+<icon type="stock">casimir-editor</icon>
+<provides><binary>/usr/bin/casimir-editor</binary></provides>
+<keywords>
+<keyword>casimir</keyword>
+<keyword>editor</keyword>
+<keyword>dyslexia</keyword>
+<keyword>SAAC</keyword>
+<keyword>sensory</keyword>
+</keywords>
+<keywords xml:lang="es">
+<keyword>dislexia</keyword>
+<keyword>SAAC</keyword>
+<keyword>multisensorial</keyword>
+<keyword>aprendizaje</keyword>
+</keywords>
+<keywords xml:lang="ca_ES">
+<keyword>aprenentatge</keyword>
+</keywords>
+</component>

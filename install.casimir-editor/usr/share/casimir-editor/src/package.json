@@ -10,7 +10,7 @@
   "license":"GPL-3.0",
   "window": {
     "title": "Editor Casimir",
-    "icon": "/usr/share/pixmaps/casimir-editor.png",
+    "icon": "icon/casimir-editor.png",
     "frame": true,
     "width": 1024,
     "height": 768,

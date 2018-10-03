@@ -1,3 +1,9 @@
+casimir-editor (1.12) bionic; urgency=medium
+
+  * Initial release for bionic
+
+ -- Juan Ramon Pelegrina <juapesai@hotmail.com>  Wed, 03 Oct 2018 10:29:05 +0200
+
 casimir-editor (1.2) xenial; urgency=medium
 
   * Removed deprecated locale

@@ -1,3 +1,9 @@
+casimir-editor (1.13) bionic; urgency=medium
+
+  * fixed desktop typo
+
+ -- Juanma Navarro Mañez <juanma1980@gmail.com>  Fri, 29 Mar 2019 14:14:44 +0100
+
 casimir-editor (1.12) bionic; urgency=medium
 
   * Initial release for bionic

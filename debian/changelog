@@ -1,3 +1,9 @@
+casimir-editor (1.23) focal; urgency=medium
+
+  * Initial release for focal
+  
+ -- Juan Ramon Pelegrina <juapesai@hotmail.com>  Mon, 31 May 2021 13:22:33 +0200
+
 casimir-editor (1.13) bionic; urgency=medium
 
   * fixed desktop typo
